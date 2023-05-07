@@ -3,9 +3,6 @@ package com.internshiptoolapp.entities;
 import javax.persistence.Entity;
 
 @Entity
-public class Member extends User {
+public class Member extends UserEntity {
 
-    public Member() {
-        super();
-    }
 }

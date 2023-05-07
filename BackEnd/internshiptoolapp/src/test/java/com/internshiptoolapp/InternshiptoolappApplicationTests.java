@@ -1,4 +1,4 @@
-package com.internshiptoolapp.internshiptoolapp;
+package com.internshiptoolapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

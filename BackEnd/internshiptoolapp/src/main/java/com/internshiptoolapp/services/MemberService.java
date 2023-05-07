@@ -14,11 +14,11 @@ public class MemberService {
     @Autowired
     private MemberRepository memberRepository;
     
-    public Member addTeamMember(Member member) {
+    public Member addMember(Member member) {
         return memberRepository.save(member);
     }
 
-    public Member getTeamMemberById(long id) {
+    public Member getMemberById(long id) {
         return memberRepository.findById(id).orElse(null);
     }
 
@@ -26,7 +26,4 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member addStudent(Member member) {
-        return memberRepository.save(member);
-    }
 }

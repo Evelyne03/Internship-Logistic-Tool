@@ -28,7 +28,7 @@ public class MemberController {
 
     @PostMapping("/newMember")
     public ResponseEntity<Member> addMember(@RequestBody Member member) {
-        Member result = memberService.addStudent(member);
+        Member result = memberService.addMember(member);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

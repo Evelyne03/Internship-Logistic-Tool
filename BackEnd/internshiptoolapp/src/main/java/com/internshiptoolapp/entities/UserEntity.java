@@ -1,15 +1,10 @@
 package com.internshiptoolapp.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table()
-public abstract class User {
+public abstract class UserEntity {
 
     private enum userType {
         STUDENT, MENTOR,
@@ -45,7 +40,19 @@ public abstract class User {
         return type;
     }
 
-    public void Login(String email, String password) {
-        System.out.println("Login being called");
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setType(userType type) {
+        this.type = type;
     }
 }
