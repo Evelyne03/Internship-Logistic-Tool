@@ -3,8 +3,8 @@ package com.internshiptoolapp.entities;
 import javax.persistence.*;
 
 @Entity
-@Table()
-public abstract class UserEntity {
+@Table(name = "[user]")
+public abstract class User {
 
     private enum userType {
         STUDENT, MENTOR,

@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.internshiptoolapp.entities.UserEntity;
+import com.internshiptoolapp.entities.User;
 
-public interface UserRepository<T extends UserEntity> extends JpaRepository<T, Long> {
+public interface UserRepository<T extends User> extends JpaRepository<T, Long> {
     List<T> findAll();
-    T findById(long id);
 }

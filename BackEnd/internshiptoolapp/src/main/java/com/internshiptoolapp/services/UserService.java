@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.internshiptoolapp.entities.UserEntity;
+import com.internshiptoolapp.entities.User;
 import com.internshiptoolapp.repository.UserRepository;
 
 @Service
-public class UserService<T extends UserEntity> {
+public class UserService<T extends User> {
 
     @Autowired
     private UserRepository<T> userRepository;

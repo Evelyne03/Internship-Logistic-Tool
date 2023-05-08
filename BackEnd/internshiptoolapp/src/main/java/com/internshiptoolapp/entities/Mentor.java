@@ -1,5 +1,8 @@
 package com.internshiptoolapp.entities;
 
-public class Mentor extends UserEntity{
+import javax.persistence.Entity;
+
+@Entity
+public class Mentor extends User{
     
 }
