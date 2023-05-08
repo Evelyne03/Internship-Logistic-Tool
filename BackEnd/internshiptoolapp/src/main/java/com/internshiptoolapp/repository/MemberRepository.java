@@ -7,4 +7,5 @@ import com.internshiptoolapp.entities.Member;
 
 public interface MemberRepository extends JpaRepository<Member, Long>{
     List<Member> findAll();
+    Member findById(long id);
 }
