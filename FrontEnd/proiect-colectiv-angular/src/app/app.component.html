@@ -16,7 +16,7 @@
     Home
   </button>
   <button class="toolbar-button" mat-button color="Basic" aria-label="Example icon-button with menu icon">
-    Guide
+    Guides
   </button>
 
   <span class="spacer"></span>
@@ -28,10 +28,48 @@
 
 <div class="content" role="main">
 
-  <!-- Title -->
-  <div>
+  <!-- Welcome -->
+  <div class="home-welcome">
     <h1 class="title">Welcome!</h1>
+    <p>Welcome to our site! Our logistics tool for internships is designed to help you manage your tasks, deadlines, and
+      progress with ease. We are committed to providing you with the support you need to make the most out of your
+      internship experience.</p>
   </div>
+
+  <!-- Make Account -->
+  <div class="container">
+
+    <div class="container-child">
+      <mat-card>
+        <mat-card-header>
+          <h2>Join us!</h2>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Create your account and manage your internship teams.</p>
+        </mat-card-content>
+        <mat-card-actions style="margin-left: auto; margin-right: auto; margin-top: 20px;">
+          <button mat-raised-button color="primary">Create Account</button>
+        </mat-card-actions>
+        <mat-card-actions style="margin-left: auto; margin-right: auto;">
+          Already have an account? <button mat-button>Sign in</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class=" container-child">
+      <mat-card>
+        <mat-card-header>
+          <h2>Get started!</h2>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Read our quick guides to get familiar with our tool.</p>
+        </mat-card-content>
+        <mat-card-actions style="margin-left: auto; margin-right: auto; margin-top: 20px;">
+          <button mat-raised-button color="primary">Guides</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
   <!-- Links -->
   <div class="card-container">
   </div>

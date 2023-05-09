@@ -20,6 +20,15 @@ p {
     margin: 0;
 }
 
+.container {
+    display: flex;
+}
+
+.container-child {
+    width: 300px;
+    margin: 0 20px 0 20px;
+}
+
 .spacer {
     flex: 1;
 }
@@ -30,6 +39,22 @@ p {
 
 .toolbar-button {
     margin: 0 5px 0 10px;
+}
+
+.home-welcome {
+    margin: 40px 0 40px;
+}
+
+.float-container {
+    border: 3px solid #fff;
+    padding: 20px;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
 }
 
 mat-toolbar {
@@ -48,6 +73,7 @@ mat-toolbar {
 h1.title {
     font-weight: 500;
     font-size: xx-large;
+    text-align: center;
 }
 
 .toolbar {
