@@ -6,23 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.internshiptoolapp.entities.User;
-import com.internshiptoolapp.repository.UserRepository;
+import com.internshiptoolapp.repository.UserRepo;
 
 @Service
-public class UserService<T extends User> {
+public class UserService {
+
+    private final UserRepo userRepository;
 
     @Autowired
-    private UserRepository<T> userRepository;
+    public UserService(UserRepo userRepository) {
+        this.userRepository = userRepository;
+    }
 
-    public T add(T user) {
+    
+    //add meth
+    public User addUser(User user) {
         return userRepository.save(user);
     }
 
-    public T findById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-
-    public List<T> findAll() {
+    //get meth
+    public List<User> findAllUsers() {
         return userRepository.findAll();
     }
+
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
 }
+

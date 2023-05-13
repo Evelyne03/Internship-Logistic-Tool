@@ -3,16 +3,16 @@ package com.internshiptoolapp.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.internshiptoolapp.repository.TeamRepo;
+import com.internshiptoolapp.repository.TaskRepo;
 
 @Service
-public class TeamService {
+public class TaskService {
 
-    private final TeamRepo teamRepository;
+    private final TaskRepo taskRepository;
 
     @Autowired
-    public TeamService(TeamRepo teamRepository) {
-        this.teamRepository = teamRepository;
+    public TaskService(TaskRepo taskRepository) {
+        this.taskRepository = taskRepository;
     }
 
     // Add methods to handle CRUD operations

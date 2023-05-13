@@ -1,11 +1,10 @@
 package com.internshiptoolapp.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.internshiptoolapp.entities.User;
 
-public interface UserRepository<T extends User> extends JpaRepository<T, Long> {
-    List<T> findAll();
+@Repository
+public interface UserRepo extends JpaRepository<User, Long> {
 }

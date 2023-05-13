@@ -1,34 +1,30 @@
 package com.internshiptoolapp.entities;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
-@Table()
+@Table(name = "teams")
 public class Team {
-   
+
     @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @OneToOne
+    @JoinColumn(name = "team_leader_id")
+    private User teamLeader;
 
-    @Column(nullable = false)
-    private long leaderId;
+    @OneToOne
+    @JoinColumn(name = "mentor_id")
+    private User mentor;
 
-    protected Team() {}
+    @OneToMany(mappedBy = "team")
+    private List<User> members;
 
-    public Team(String name, long leaderId) {
-        this.name = name;
-        this.leaderId = leaderId;
-    }
+    @OneToMany(mappedBy = "team")
+    private List<Activity> activities;
 
-    public long getLeaderId() {
-        return this.leaderId;
-    }
-
-    public String getName() {
-        return this.name;
-    }
+    // Getters and Setters...
 }
