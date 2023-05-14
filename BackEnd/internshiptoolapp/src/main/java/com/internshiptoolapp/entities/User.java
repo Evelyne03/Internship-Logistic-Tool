@@ -3,12 +3,14 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -23,6 +25,7 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
@@ -91,4 +94,16 @@ public class User {
      public void setRole(String role) {
          this.role = role;
      }
+
+     public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeamMentored(Team teamMentored) {
+        this.teamMentored = teamMentored;
+    }
 }
