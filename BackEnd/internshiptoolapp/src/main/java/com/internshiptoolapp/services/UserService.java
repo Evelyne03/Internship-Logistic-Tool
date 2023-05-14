@@ -2,7 +2,6 @@ package com.internshiptoolapp.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.internshiptoolapp.entities.User;
@@ -13,7 +12,6 @@ public class UserService {
 
     private final UserRepo userRepository;
 
-    @Autowired
     public UserService(UserRepo userRepository) {
         this.userRepository = userRepository;
     }
