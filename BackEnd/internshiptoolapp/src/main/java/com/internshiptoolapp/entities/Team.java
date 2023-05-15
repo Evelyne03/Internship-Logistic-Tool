@@ -1,6 +1,7 @@
 package com.internshiptoolapp.entities;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.*;
 
@@ -69,7 +70,9 @@ public class Team {
     }
 
     public List<User> getMembers() {
-        return members;
+        return members.stream()
+                  .filter(user -> !user.getRole().equalsIgnoreCase("mentor"))
+                  .collect(Collectors.toList());
     }
 
     public void setMembers(List<User> members) {

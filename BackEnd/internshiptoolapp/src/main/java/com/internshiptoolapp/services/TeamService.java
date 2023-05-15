@@ -47,11 +47,17 @@ public class TeamService {
         if (team.getMentor() != null) {
             throw new IllegalArgumentException("Team already has a mentor");
         }
-    
+        
+        Team existingTeam = teamRepository.findByMentor(user);
+        if(existingTeam != null) {
+            throw new IllegalArgumentException("User is already mentor of another team");
+        }
+
         team.setMentor(user);
         teamRepository.save(team);
         
         user.setTeamMentored(team);
+        user.setTeam(team);
         return userRepository.save(user);
     }
 

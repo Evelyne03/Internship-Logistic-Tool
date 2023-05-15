@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
@@ -99,9 +100,15 @@ public class User {
         this.team = team;
     }
 
+    @JsonIgnore
     public Team getTeam() {
         return team;
     }
+
+    public Long getTeamId() {
+        return this.team != null ? this.team.getId() : 0;
+    }
+    
 
     public void setTeamMentored(Team teamMentored) {
         this.teamMentored = teamMentored;
