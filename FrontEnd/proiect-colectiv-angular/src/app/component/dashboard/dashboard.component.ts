@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit{
     this.userObj.email = this.userDetail.value.email;
     this.userObj.password = this.userDetail.value.password;
     this.userObj.role = this.userDetail.value.role;
-    //this.userObj.teamid = this.userDetail.value(0);
+    this.userObj.teamid = this.userDetail.value.teamid;
 
 
     this.userService.addUser(this.userObj).subscribe(res => {
