@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <p class = "title">Menu</p>
+
+      <div class = "buttons">
+        <button mat-raised-button class="button" routerLink="myData">See my data</button>
+        <button mat-raised-button class="button" routerLink="allStudents">See all users</button>  
+        <button mat-raised-button class="button" routerLink="myAttendance">See my students</button>  
+        <button mat-raised-button class="button" routerLink="myFeedback">TODO</button>  
+      </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
