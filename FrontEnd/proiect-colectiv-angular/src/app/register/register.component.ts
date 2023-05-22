@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     const user: User = this.registerForm.value;
-    this.UserService.login(user).subscribe(
+    this.UserService.register(user).subscribe(
       (data: User) => {
         if (data.role === 'mentor') {
           this.router.navigate(['/mentor/myData']);
