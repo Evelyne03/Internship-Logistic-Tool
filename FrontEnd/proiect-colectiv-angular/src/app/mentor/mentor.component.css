@@ -1,0 +1,59 @@
+.sidenav-container {
+    height: 100%;
+  }
+
+  .sidenav-container::-webkit-scrollbar {
+    display:none;
+  }
+  
+  .sidenav {
+    width: 10%;
+    background-color: #673ab7;
+    color: white;
+    overflow-x: hidden;
+  }
+  
+  :host{
+    display: block;
+  }
+  
+  .button {
+    width: 90%;
+    margin: 5% auto;
+    margin-left: 5%;
+    color: white;
+    background-color: #9868eb;
+  }
+  
+  p{
+    color: white;
+    background-color: #673ab7;
+  }
+
+html,body{
+    height: 100%;
+    margin: 0;
+}
+
+body {
+  min-width: 100%;
+  overflow-x: hidden;
+}
+
+
+.mat-sidenav-container {
+    height: 100%;
+  }
+
+  mat-sidenav-content {
+    padding: 20px;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .title{
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+  }

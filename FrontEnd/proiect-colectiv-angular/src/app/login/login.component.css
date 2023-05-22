@@ -1,0 +1,33 @@
+mat-card{
+    width: 100%;
+    align-self: center;
+    margin-top: 1%;
+}
+
+mat-card-title{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: black;
+    align-items: center;
+    align-self: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+}
+
+mat-form-field{
+    width: 35%;
+    align-self: center;
+}
+
+button{
+    width: 20%;
+    align-self: center;
+    margin-bottom: 2%;
+    background-color: #9868eb;
+}

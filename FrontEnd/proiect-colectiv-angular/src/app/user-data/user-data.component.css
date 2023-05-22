@@ -1,0 +1,10 @@
+.card {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  mat-card-content {
+    margin: 15px;
+  }
+  
