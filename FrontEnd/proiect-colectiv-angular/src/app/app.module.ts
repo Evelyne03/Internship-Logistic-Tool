@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './user-list/user-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MatSortModule } from '@angular/material/sort';
     MemberComponent,
     DashboardComponent,
     UserDataComponent,
-    UserListComponent
+    UserListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
