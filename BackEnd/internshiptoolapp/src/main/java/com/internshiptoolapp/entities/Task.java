@@ -1,5 +1,6 @@
 package com.internshiptoolapp.entities;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;
@@ -19,6 +20,9 @@ public class Task {
 
     @Column
     private String description;
+
+    @Column
+    private Boolean isCompleted;
 
     @JsonBackReference
     @ManyToOne
@@ -81,4 +85,13 @@ public class Task {
     public void setDesciption(String description) {
         this.description = description;
     }
+
+    public Boolean getIsCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(Boolean completed) {
+        isCompleted = completed;
+    }
+
 }

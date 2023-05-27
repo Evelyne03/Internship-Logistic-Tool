@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.internshiptoolapp.entities.MentorGrade;
 import com.internshiptoolapp.entities.Task;
+import com.internshiptoolapp.services.MentorGradeService;
 import com.internshiptoolapp.services.TaskService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,9 +24,18 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    private MentorGradeService mentorGradeService;
+
     @PostMapping("/create")
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         Task createdTask = taskService.createTask(task);
+        MentorGrade grade = new MentorGrade();
+        grade.setTask(createdTask);
+        grade.setGrade(-1);
+        grade.setMentor(null);
+        grade.setStudent(null);
+        mentorGradeService.createGrade(grade);
         return ResponseEntity.ok(createdTask);
     }
 

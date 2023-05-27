@@ -42,7 +42,6 @@ public class User {
 
     @OneToMany(mappedBy = "mentor")
     private List<MentorGrade> gradesAsMentor;
-
     // Getters and Setters...
 
     public User() {
