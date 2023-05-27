@@ -42,7 +42,6 @@ public class User {
 
     @OneToMany(mappedBy = "mentor")
     private List<MentorGrade> gradesAsMentor;
-
     // Getters and Setters...
 
     public User() {
@@ -109,8 +108,19 @@ public class User {
         return this.team != null ? this.team.getId() : 0;
     }
     
-
     public void setTeamMentored(Team teamMentored) {
         this.teamMentored = teamMentored;
+    }
+
+    public void setTeamLeadered(Team team){
+        this.teamLed = team;
+    }
+
+    public Team getTeamMentored() {
+        return teamMentored;
+    }
+
+    public Team getTeamLed() {
+        return teamLed;
     }
 }

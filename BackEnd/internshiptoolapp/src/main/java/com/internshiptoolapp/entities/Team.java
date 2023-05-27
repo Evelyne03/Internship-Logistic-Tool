@@ -86,6 +86,13 @@ public class Team {
         return activities;
     }
 
+    public void setActivities(List<Activity> activities) {
+        for (Activity activity : activities) {
+            activity.setTeam(this);
+        }
+        this.activities = activities;
+    }
+
     public String getName() {
         return name;
     }
