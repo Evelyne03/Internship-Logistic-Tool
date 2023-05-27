@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "activities")
 public class Activity {
@@ -12,6 +14,13 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String name;
+
+    @Column
+    private String description;
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "team_id")
     private Team team;
@@ -20,4 +29,46 @@ public class Activity {
     private List<Task> tasks;
 
     // Getters and Setters...
+    public Activity() {
+    }
+
+    public Activity(String name, String description, Team team, List<Task> tasks) {
+        this.name = name;
+        this.description = description;
+        this.team = team;
+        this.tasks = tasks;
+    }
+
+    //getters and setters
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() { return description; }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setId(Long id) { this.id = id; }
+
+    public void setName(String name) { this.name = name; }
+
+    public void setDescription(String description) { this.description = description; }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
 }
