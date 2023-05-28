@@ -1,6 +1,5 @@
 package com.internshiptoolapp.entities;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.*;

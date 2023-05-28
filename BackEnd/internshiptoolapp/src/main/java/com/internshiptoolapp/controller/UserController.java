@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.internshiptoolapp.entities.User;
-import com.internshiptoolapp.repository.UserRepo;
 import com.internshiptoolapp.services.UserService;
 
 import java.util.List;
