@@ -5,10 +5,16 @@ import java.util.stream.Collectors;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "teams")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
 public class Team {
 
     @Id
@@ -18,6 +24,7 @@ public class Team {
     @Column
     private String name;
 
+    
     @OneToOne
     @JoinColumn(name = "team_leader_id")
     private User teamLeader;
@@ -27,10 +34,10 @@ public class Team {
     private User mentor;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private List<User> members;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private List<Activity> activities;
 
 
@@ -69,6 +76,7 @@ public class Team {
         this.mentor = mentor;
     }
 
+    @JsonIgnore
     public List<User> getMembers() {
         return members.stream()
                   .filter(user -> !user.getRole().equalsIgnoreCase("mentor"))

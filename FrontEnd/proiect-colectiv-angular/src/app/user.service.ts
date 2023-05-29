@@ -15,12 +15,16 @@ export class UserService {
   
     constructor(private http: HttpClient, private router: Router) {}
   
-    login(userData: { username: string; email: string; password: string; role: string; teamid: number;}) {
+    login(userData: { username: string; email: string; password: string; role: string; teamId: number;}) {
       return this.http.post<User>(`${this.url}/users/login`, userData).pipe(
         tap(user => {
           this._currentUser.next(user);
         })
       );
+    }
+
+    deleteUser(userId: number) {
+      return this.http.delete(`${this.url}/users/delete/${userId}`);
     }
   
     redirectToComponent1() {
@@ -38,4 +42,9 @@ export class UserService {
     getMembers():Observable<User[]> {
       return this.http.get<User[]>(`${this.url}/users/getAll`);
     }
+
+    get currentUserValue(): User {
+      return this._currentUser.value;
+    }
+    
 }

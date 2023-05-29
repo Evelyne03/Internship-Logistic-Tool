@@ -42,7 +42,7 @@ body {
 
 
 .mat-sidenav-container {
-    height: 100%;
+    min-height: 450px;
   }
 
   mat-sidenav-content {

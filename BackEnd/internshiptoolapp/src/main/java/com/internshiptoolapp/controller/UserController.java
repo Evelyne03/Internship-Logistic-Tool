@@ -45,5 +45,15 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
     }
 
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
+        try {
+            userService.deleteUser(userId);
+            return ResponseEntity.ok("User deleted");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     // Add more methods to handle different requests
 }

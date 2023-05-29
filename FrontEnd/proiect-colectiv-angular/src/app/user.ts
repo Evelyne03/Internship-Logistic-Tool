@@ -5,5 +5,5 @@ export interface User {
     password: string;
     role: string;
     image: string;
-    teamid: number;
+    teamId: number;
 }

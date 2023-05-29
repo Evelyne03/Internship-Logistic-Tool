@@ -10,21 +10,17 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'email', 'role', 'teamId'];
-  dataSource!: MatTableDataSource<User>;
+    users: User[] = [];
 
-  @ViewChild(MatSort)
-  sort: MatSort = new MatSort;
+    constructor(private userService: UserService){}
 
-  constructor(private userService: UserService) { }
-
-  ngOnInit() {
-    this.userService.getMembers().subscribe(data=>{
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
+    ngOnInit(): void {
+        this.refreshComponent();
     }
 
-    );
+    refreshComponent(){
+      this.userService.getMembers().subscribe((users: User[]) =>{
+          this.users = users;
+        })
+    }
   }
-}
-

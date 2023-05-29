@@ -1,6 +1,7 @@
 package com.internshiptoolapp.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -58,7 +59,7 @@ public class TeamService {
         team.setMentor(user);
         teamRepository.save(team);
         
-        user.setTeamMentored(team);
+        //user.setTeamMentored(team);
         user.setTeam(team);
         return userRepository.save(user);
     }
@@ -83,7 +84,7 @@ public class TeamService {
         team.setTeamLeader(user);
         teamRepository.save(team);
         
-        user.setTeamLeadered(team);
+        //user.setTeamLeadered(team);
         user.setTeam(team);
         return userRepository.save(user);
 
@@ -106,6 +107,10 @@ public class TeamService {
 
     public List<Team> findAllTeams() {
         return teamRepository.findAll();
+    }
+
+    public Optional<Team> findById(Long teamId) {
+        return teamRepository.findById(teamId);
     }
 
     

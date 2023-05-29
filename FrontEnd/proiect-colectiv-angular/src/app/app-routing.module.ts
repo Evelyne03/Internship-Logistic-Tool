@@ -14,6 +14,7 @@ import { UserAttendanceComponent } from './user-attendance/user-attendance.compo
 import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserListTeamComponent } from './user-list-team/user-list-team.component';
 
 const routes: Routes = [
   { 
@@ -31,7 +32,8 @@ const routes: Routes = [
           children: [
             { path: '', redirectTo: 'myData', pathMatch: 'full' },
             { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
-            {path:'allStudents', component: UserListComponent, pathMatch: 'full'}
+            {path:'allStudents', component: UserListComponent, pathMatch: 'full'},
+            {path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full'},
           ]
         },
       { path: 'member', component: MemberComponent, pathMatch: 'full' },

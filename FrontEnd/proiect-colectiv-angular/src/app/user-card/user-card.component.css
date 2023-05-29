@@ -1,0 +1,24 @@
+.card {
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 20px;
+  }
+  
+  mat-card-content {
+    margin: 15px;
+  }
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .button {
+    align-self: right;
+    margin: 10px;
+}

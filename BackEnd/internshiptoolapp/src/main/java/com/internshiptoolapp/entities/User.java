@@ -4,10 +4,16 @@ import java.util.List;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "users")
+@JsonIdentityInfo(
+  generator = ObjectIdGenerators.PropertyGenerator.class, 
+  property = "id")
 public class User {
 
     @Id
@@ -26,21 +32,22 @@ public class User {
     @Column(nullable = false)
     private String role;
 
-    @JsonBackReference
-    @ManyToOne
+    @ManyToOne  
     @JoinColumn(name = "team_id")
     private Team team;
 
+   // @JsonBackReference
     @OneToOne(mappedBy = "teamLeader")
     private Team teamLed;
 
+    @JsonBackReference
     @OneToOne(mappedBy = "mentor")
     private Team teamMentored;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
     private List<MentorGrade> gradesAsStudent;
 
-    @OneToMany(mappedBy = "mentor")
+    @OneToMany(mappedBy = "mentor", fetch = FetchType.LAZY)
     private List<MentorGrade> gradesAsMentor;
     // Getters and Setters...
 
@@ -53,6 +60,7 @@ public class User {
         this.email = email;
         this.role = role;
      }
+     
 
      // Getters and Setters...
      public Long getId() {
@@ -105,22 +113,27 @@ public class User {
     }
 
     public Long getTeamId() {
-        return this.team != null ? this.team.getId() : 0;
+        if(this.team == null) return 0L;
+        else return this.team.getId();
     }
     
+    
+
+    /*public Team getTeamLed() {
+        return teamLed;
+    }
+     public void setTeamLeadered(Team team){
+        this.teamLed = team;
+    }
     public void setTeamMentored(Team teamMentored) {
         this.teamMentored = teamMentored;
     }
 
-    public void setTeamLeadered(Team team){
-        this.teamLed = team;
-    }
+   
 
     public Team getTeamMentored() {
         return teamMentored;
     }
-
-    public Team getTeamLed() {
-        return teamLed;
-    }
+    
+    */
 }

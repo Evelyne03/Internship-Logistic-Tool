@@ -2,6 +2,7 @@ package com.internshiptoolapp.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.internshiptoolapp.entities.Activity;
 import com.internshiptoolapp.entities.Team;
 import com.internshiptoolapp.entities.User;
+import com.internshiptoolapp.repository.TeamRepo;
 import com.internshiptoolapp.services.TeamService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -95,6 +97,13 @@ public class TeamController {
         List<Team> teams = teamService.findAllTeams();
         return ResponseEntity.ok(teams);
     
+    }
+
+     @GetMapping("/{teamId}/users")
+    public ResponseEntity<List<User>> getUsersByTeamId(@PathVariable Long teamId) {
+        Optional<Team> teamOptional = teamService.findById(teamId);
+        List<User> users = teamOptional.get().getMembers();
+        return ResponseEntity.ok(users);
     }
 
 }
