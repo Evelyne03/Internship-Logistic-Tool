@@ -26,25 +26,32 @@ export class UserService {
     deleteUser(userId: number) {
       return this.http.delete(`${this.url}/users/delete/${userId}`);
     }
-  
-    redirectToComponent1() {
-      this.router.navigate(['/component1']);
-    }
-
-    redirectToComponent2() {
-      this.router.navigate(['/component2']);
-    }
-  
-    handleError(error: any) {
-      console.error(error); // Do your error handling here
-    }
-
-    getMembers():Observable<User[]> {
-      return this.http.get<User[]>(`${this.url}/users/getAll`);
-    }
 
     get currentUserValue(): User {
       return this._currentUser.value;
     }
-    
+
+  register(userData: { username: string; email: string; password: string; role: string; teamId: number; }) {
+    return this.http.post<User>(`${this.url}/users/create`, userData).pipe(
+      tap(user => {
+        this._currentUser.next(user);
+      })
+    );
+  }
+
+  redirectToComponent1() {
+    this.router.navigate(['/component1']);
+  }
+
+  redirectToComponent2() {
+    this.router.navigate(['/component2']);
+  }
+
+  handleError(error: any) {
+    console.error(error); // Do your error handling here
+  }
+
+  getMembers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/users/getAll`);
+  }
 }

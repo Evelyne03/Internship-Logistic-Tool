@@ -27,6 +27,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UserListTeamComponent } from './user-list-team/user-list-team.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { UserListTeamComponent } from './user-list-team/user-list-team.component
     UserDataComponent,
     UserListComponent,
     UserCardComponent,
-    UserListTeamComponent
+    UserListTeamComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
