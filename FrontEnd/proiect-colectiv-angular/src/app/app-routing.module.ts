@@ -16,6 +16,7 @@ import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListTeamComponent } from './user-list-team/user-list-team.component';
+import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'task', component:TodoComponent, pathMatch: 'full'},
       { path: 'component1', component: Component1Component, pathMatch: 'full' },
       { path: 'component2', component: Component2Component, pathMatch: 'full' },
       { path: 'login', component: LoginComponent, pathMatch: 'full' },

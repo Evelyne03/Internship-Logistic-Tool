@@ -28,6 +28,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UserListTeamComponent } from './user-list-team/user-list-team.component';
 import { RegisterComponent } from './register/register.component';
+import { TodoComponent } from './todo/todo.component';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -46,7 +49,8 @@ import { RegisterComponent } from './register/register.component';
     UserListComponent,
     UserCardComponent,
     UserListTeamComponent,
-    RegisterComponent
+    RegisterComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,7 @@ import { RegisterComponent } from './register/register.component';
     MatListModule, 
     MatTableModule,
     MatSortModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

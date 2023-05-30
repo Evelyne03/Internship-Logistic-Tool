@@ -1,0 +1,67 @@
+.todo-container {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+.task-card {
+    flex-basis: 33%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: purple;
+  }
+
+  .task-grid {
+    width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  }
+  
+  .task-box {
+
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+    margin-left: 10px;
+      
+  }
+  
+  .task-card {
+    width: 25%;
+    max-width: 350px;
+    margin-left: 7px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: purple;
+  }
+
+  .test{
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 10px;
+    display:flex;
+    align-items: start; 
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .center {
+    text-align:center;
+  }
+
+  .stanga{
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .gunoi{
+    align-self: center;
+  }
+  
