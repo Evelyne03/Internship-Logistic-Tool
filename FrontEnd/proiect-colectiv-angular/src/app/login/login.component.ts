@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../user';
 import { UserService } from '../user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+<<<<<<< Updated upstream
     const user: User = this.loginForm.value;
     this.UserService.login(user).subscribe(
         (data: User) => {
@@ -39,5 +42,22 @@ export class LoginComponent implements OnInit {
         }
     );
 }
+=======
+    this.UserService.login(this.loginForm.value).subscribe(
+      (user) => {
+        if (user) {
+          if (user.role === 'mentor') {
+            this.router.navigate(['/mentor/myData']);
+          } else if (user.role === 'member') {
+            this.router.navigate(['/member/myData']);
+          }
+        }
+      },
+      (error) =>{
+        console.error(error);
+      }
+    )
+  }
+>>>>>>> Stashed changes
 
 }

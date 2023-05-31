@@ -26,6 +26,15 @@ import { UserListComponent } from './user-list/user-list.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { RegisterComponent } from './register/register.component';
+<<<<<<< Updated upstream
+=======
+import { TodoComponent } from './todo/todo.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginErrorComponent } from './login-error/login-error.component';
+
+
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -42,7 +51,15 @@ import { RegisterComponent } from './register/register.component';
     DashboardComponent,
     UserDataComponent,
     UserListComponent,
+<<<<<<< Updated upstream
     RegisterComponent
+=======
+    UserCardComponent,
+    UserListTeamComponent,
+    RegisterComponent,
+    TodoComponent,
+    LoginErrorComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -60,6 +77,11 @@ import { RegisterComponent } from './register/register.component';
     MatListModule, 
     MatTableModule,
     MatSortModule,
+<<<<<<< Updated upstream
+=======
+    MatIconModule,
+    MatDialogModule
+>>>>>>> Stashed changes
   ],
   providers: [],
   bootstrap: [AppComponent]
