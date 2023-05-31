@@ -1,12 +1,16 @@
 package com.internshiptoolapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.internshiptoolapp.entities.Team;
 import com.internshiptoolapp.entities.User;
+import com.internshiptoolapp.services.TeamService;
 import com.internshiptoolapp.services.UserService;
 
+import java.io.Console;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +20,9 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+
+    @Autowired
+    private TeamService teamService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -30,6 +37,13 @@ public class UserController {
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User createdUser = userService.createUser(user);
+        if(createdUser.getRole().equals("teamleader")){
+            Team createdTeam = new Team();
+            createdTeam.setTeamLeader(createdUser);
+            createdTeam.setName(createdUser.getUsername() + "'s team");	
+            createdUser.setTeam(createdTeam);  
+            teamService.createTeam(createdTeam);  
+        }
         return ResponseEntity.ok(createdUser);
     }
 
