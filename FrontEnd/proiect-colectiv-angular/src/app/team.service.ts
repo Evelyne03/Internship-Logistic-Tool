@@ -18,4 +18,8 @@ export class TeamService {
   getTeamMembers(teamid:number):Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/teams/${teamid}/users`);
   }
+
+  getTeam(teamid:number):Observable<Team> {
+    return this.http.get<Team>(`${this.url}/teams/${teamid}`);
+  }
 }
