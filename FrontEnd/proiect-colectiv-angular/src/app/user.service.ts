@@ -10,31 +10,39 @@ import { User } from './user';
 export class UserService {
   private _currentUser = new BehaviorSubject<User>({} as any);
   readonly currentUser = this._currentUser.asObservable();
-    
-    private url = 'http://localhost:8080'; // Change to your API url
-  
-    constructor(private http: HttpClient, private router: Router) {}
-  
-    login(userData: { username: string; email: string; password: string; role: string; teamId: number;}) {
-      return this.http.post<User>(`${this.url}/users/login`, userData).pipe(
-        tap(user => {
-          this._currentUser.next(user);
-        })
-      );
-    }
 
-    deleteUser(userId: number) {
-      return this.http.delete(`${this.url}/users/delete/${userId}`);
-    }
+  private url = 'http://localhost:8080'; // Change to your API url
 
-    get currentUserValue(): User {
-      return this._currentUser.value;
+  constructor(private http: HttpClient, private router: Router) {
+    // Retrieve user data from localStorage on service initialization
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      this._currentUser.next(JSON.parse(storedUser));
     }
+  }
+
+  login(userData: { username: string; email: string; password: string; role: string; teamId: number; }) {
+    return this.http.post<User>(`${this.url}/users/login`, userData).pipe(
+      tap(user => {
+        this._currentUser.next(user);
+        localStorage.setItem('currentUser', JSON.stringify(user)); // Store user data in localStorage
+      })
+    );
+  }
+
+  deleteUser(userId: number) {
+    return this.http.delete(`${this.url}/users/delete/${userId}`);
+  }
+
+  get currentUserValue(): User {
+    return this._currentUser.value;
+  }
 
   register(userData: { username: string; email: string; password: string; role: string; teamId: number; }) {
     return this.http.post<User>(`${this.url}/users/create`, userData).pipe(
       tap(user => {
         this._currentUser.next(user);
+        localStorage.setItem('currentUser', JSON.stringify(user)); // Store user data in localStorage
       })
     );
   }
@@ -53,5 +61,10 @@ export class UserService {
 
   getMembers(): Observable<User[]> {
     return this.http.get<User[]>(`${this.url}/users/getAll`);
+  }
+
+  logout() {
+    this._currentUser.next({} as any);
+    localStorage.removeItem('currentUser'); // Remove user data from localStorage
   }
 }
