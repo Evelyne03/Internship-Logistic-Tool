@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "InternshiptoolappApplication",
+            "request": "launch",
+            "mainClass": "com.internshiptoolapp.InternshiptoolappApplication",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-InternshiptoolappApplication<internshiptoolapp>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

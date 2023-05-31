@@ -21,6 +21,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.UserService.currentUser != null) {
+      let role: String = this.UserService.currentUserValue.role;
+      this.router.navigate(['/' + role + '/myData']);
+    }
   }
 
   onSubmit() {
