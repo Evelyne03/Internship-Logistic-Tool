@@ -8,7 +8,7 @@ import com.internshiptoolapp.entities.User;
 import com.internshiptoolapp.services.UserService;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -34,14 +34,19 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody User user) {
-        Optional<User> dbUser = userService.findByUsername(user.getUsername());
-        if (dbUser.isPresent()) {
-            if (user.getPassword().equals(dbUser.get().getPassword()) && user.getRole().equals(dbUser.get().getRole())) {
-                return ResponseEntity.ok(dbUser.get());
+    public ResponseEntity<?> login(@RequestBody Map<String, String> user) {
+        String email = user.get("email");
+        String password = user.get("password");
+        try {
+            User dbUser = userService.findByEmail(email)
+                    .orElseThrow(() -> new IllegalArgumentException("Invalid email or password"));
+            if (!dbUser.getPassword().equals(password)) {
+                throw new IllegalArgumentException("Invalid email or password");
             }
+            return ResponseEntity.status(HttpStatus.OK).body(dbUser);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
     }
 
     @DeleteMapping("/delete/{userId}")

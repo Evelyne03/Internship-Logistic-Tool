@@ -1,13 +1,8 @@
 <div class="login">
-<mat-card>
+  <mat-card>
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-form-field>
-          <mat-label>Username</mat-label>
-          <input matInput formControlName="username" required>
-        </mat-form-field>
-        <br>
         <mat-form-field>
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" required>
@@ -18,14 +13,7 @@
           <input matInput type="password" formControlName="password" required>
         </mat-form-field>
         <br>
-        <mat-form-field>
-          <mat-label>Role</mat-label>
-          <mat-select formControlName="role" required>
-            <mat-option value="mentor">Mentor</mat-option>
-            <mat-option value="member">Member</mat-option>
-            <mat-option value="team leader">Team Leader </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
         <br>
         <button mat-raised-button color="primary" type="submit">Submit</button>
       </form>

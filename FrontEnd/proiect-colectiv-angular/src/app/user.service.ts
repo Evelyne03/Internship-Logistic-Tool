@@ -21,11 +21,11 @@ export class UserService {
     }
   }
 
-  login(userData: { username: string; email: string; password: string; role: string; teamId: number; }) {
-    return this.http.post<User>(`${this.url}/users/login`, userData).pipe(
+  login(userData: { email: string; password: string }) {
+    return this.http.post<any>(`${this.url}/users/login`, userData).pipe(
       tap(user => {
         this._currentUser.next(user);
-        localStorage.setItem('currentUser', JSON.stringify(user)); // Store user data in localStorage
+        localStorage.setItem('currentUser', JSON.stringify(user));
       })
     );
   }
@@ -42,7 +42,7 @@ export class UserService {
     return this.http.post<User>(`${this.url}/users/create`, userData).pipe(
       tap(user => {
         this._currentUser.next(user);
-        localStorage.setItem('currentUser', JSON.stringify(user)); // Store user data in localStorage
+        localStorage.setItem('currentUser', JSON.stringify(user));
       })
     );
   }
