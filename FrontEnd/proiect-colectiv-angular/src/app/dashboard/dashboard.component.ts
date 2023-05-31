@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
+  isLoggedIn: boolean = false;
+  constructor(private UserService: UserService) {
+    this.UserService.currentUser.subscribe(user => this.isLoggedIn = user.id !== undefined);
+  }
 }

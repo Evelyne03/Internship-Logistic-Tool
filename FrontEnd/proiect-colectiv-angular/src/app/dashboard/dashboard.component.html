@@ -2,8 +2,8 @@
   <mat-toolbar color=primary>
     <h1 class="title">Internship Tool Application</h1>
     <div class="buttons">
-      <button mat-raised-button class="button" routerLink="login">Login</button>
-      <button mat-raised-button class="button" routerLink="register">Register</button>
+      <button mat-raised-button class="button" *ngIf="!isLoggedIn" routerLink="login">Login</button>
+      <button mat-raised-button class="button" *ngIf="!isLoggedIn" routerLink="register">Register</button>
     </div>
   </mat-toolbar>
   <div class="content">
