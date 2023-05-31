@@ -9,7 +9,7 @@
     <p>TeamId: {{user.teamId}}</p>
     <p>UserId: {{user.id}}</p>
     <div class = "buttons">
-      <button (click)="deleteUser(user.id)" mat-raised-button class="button">Delete User</button>
+      <button *ngIf="user.role !== 'mentor'" (click)="deleteUser(user.id)" mat-raised-button class="button">Delete User</button>
     </div>
     <!-- Other fields go here -->
   </mat-card-content>
