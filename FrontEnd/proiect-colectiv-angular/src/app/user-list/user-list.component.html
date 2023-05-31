@@ -1,4 +1,4 @@
-<div style="overflow-y: auto; max-height: 400px;" class = "card-container">
+<div style="overflow-y: auto; max-height: 80%;" class = "card-container">
   <ng-container *ngFor="let user of users">
     <app-user-card *ngIf="user.role !== 'mentor'" [user]="user"></app-user-card>
   </ng-container>
