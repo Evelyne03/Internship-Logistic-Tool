@@ -71,7 +71,7 @@ const routes: Routes = [
         component: TeamleaderComponent,
         children: [
           { path: '', redirectTo: 'myData', pathMatch: 'full' },
-          //{ path: 'myData', component: UserDataComponent, pathMatch: 'full' },
+          { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
           //{ path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
           //{ path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
           //{ path: 'myFeedback', component: UserFeedbackComponent, },
