@@ -23,7 +23,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if (this.UserService.currentUser != null) {
       let role: String = this.UserService.currentUserValue.role;
-      this.router.navigate(['/' + role + '/myData']);
+      if (role === 'mentor') {
+        this.router.navigate(['/mentor/myData']);
+      } else if (role === 'member') {
+        this.router.navigate(['/member/myData']);
+      }
+      else if (role === 'team leader') {
+        this.router.navigate(['/teamleader/myData']);
+      }
     }
   }
 
@@ -34,6 +41,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/mentor/myData']);
         } else if (user.role === 'member') {
           this.router.navigate(['/member/myData']);
+        }
+        else if (user.role === 'team leader') {
+          this.router.navigate(['/teamleader/myData']);
         }
       }
     )

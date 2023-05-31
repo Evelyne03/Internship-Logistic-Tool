@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MentorComponent } from './mentor/mentor.component';
 import { MemberComponent } from './member/member.component';
+import { TeamleaderComponent } from './teamleader/teamleader.component';
 
 
 import { UserGradesComponent } from './user-grades/user-grades.component';
@@ -29,19 +30,19 @@ const routes: Routes = [
       { path: 'component2', component: Component2Component, pathMatch: 'full' },
       { path: 'login', component: LoginComponent, pathMatch: 'full' },
       { path: 'mentor', component: MentorComponent, pathMatch: 'full' },
-      {path: 'tasks', component:TodoComponent, pathMatch: 'full'},
-        {
-          path: 'mentor',
-          component: MentorComponent,
-          children: [
-            { path: '', redirectTo: 'myData', pathMatch: 'full' },
-            { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
-            {path:'allStudents', component: UserListComponent, pathMatch: 'full'},
-            {path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full'},
-  //          {path: 'myTeam', component: TeamDataComponent, pathMatch: 'full'},
-            
-          ]
-        },
+      { path: 'tasks', component: TodoComponent, pathMatch: 'full' },
+      {
+        path: 'mentor',
+        component: MentorComponent,
+        children: [
+          { path: '', redirectTo: 'myData', pathMatch: 'full' },
+          { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
+          { path: 'allStudents', component: UserListComponent, pathMatch: 'full' },
+          { path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full' },
+          //          {path: 'myTeam', component: TeamDataComponent, pathMatch: 'full'},
+
+        ]
+      },
       { path: 'register', component: RegisterComponent, pathMatch: 'full' },
       {
         path: 'mentor',
@@ -62,6 +63,18 @@ const routes: Routes = [
           { path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
           { path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
           { path: 'myFeedback', component: UserFeedbackComponent, },
+        ]
+      },
+      { path: 'teamleader', component: TeamleaderComponent, pathMatch: 'full' },
+      {
+        path: 'teamleader',
+        component: TeamleaderComponent,
+        children: [
+          { path: '', redirectTo: 'myData', pathMatch: 'full' },
+          //{ path: 'myData', component: UserDataComponent, pathMatch: 'full' },
+          //{ path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
+          //{ path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
+          //{ path: 'myFeedback', component: UserFeedbackComponent, },
         ]
       },
     ]

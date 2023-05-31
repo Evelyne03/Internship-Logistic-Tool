@@ -30,6 +30,7 @@ import { UserListTeamComponent } from './user-list-team/user-list-team.component
 import { RegisterComponent } from './register/register.component';
 import { TodoComponent } from './todo/todo.component';
 import { MatIconModule } from '@angular/material/icon';
+import { TeamleaderComponent } from './teamleader/teamleader.component';
 
 
 
@@ -50,7 +51,8 @@ import { MatIconModule } from '@angular/material/icon';
     UserCardComponent,
     UserListTeamComponent,
     RegisterComponent,
-    TodoComponent
+    TodoComponent,
+    TeamleaderComponent
   ],
   imports: [
     BrowserModule,
