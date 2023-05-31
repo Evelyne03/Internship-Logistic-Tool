@@ -65,6 +65,6 @@ export class UserService {
 
   logout() {
     this._currentUser.next({} as any);
-    localStorage.removeItem('currentUser'); // Remove user data from localStorage
+    localStorage.removeItem('currentUser');
   }
 }
