@@ -4,10 +4,8 @@
     
     <h2>{{user.username}}</h2>
     <p>Email: {{user.email}}</p>
-    <p>Password: {{user.password}}</p>
     <p>Role: {{user.role}}</p>
-    <p>TeamId: {{user.teamId}}</p>
-    <p>UserId: {{user.id}}</p>
+    <p>TeamName: {{team?.name ? team.name: "doesn't have a team"}}</p>
     <div class = "buttons">
       <button *ngIf="user.role !== 'mentor'" (click)="deleteUser(user.id)" mat-raised-button class="button">Delete User</button>
     </div>
