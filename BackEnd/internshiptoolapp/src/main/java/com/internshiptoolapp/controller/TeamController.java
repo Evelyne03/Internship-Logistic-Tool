@@ -99,6 +99,12 @@ public class TeamController {
     
     }
 
+    @GetMapping("getAllNoMentor")
+    public ResponseEntity<List<Team>> getAllTeamsNoMentor() {
+        List<Team> teams = teamService.findAllTeamsNoMentor();
+        return ResponseEntity.ok(teams);
+    }
+
      @GetMapping("/{teamId}/users")
     public ResponseEntity<List<User>> getUsersByTeamId(@PathVariable Long teamId) {
         Optional<Team> teamOptional = teamService.findById(teamId);

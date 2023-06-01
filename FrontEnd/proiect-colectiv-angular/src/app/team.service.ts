@@ -9,6 +9,8 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class TeamService {
+  
+  
   private _currentTeam = new BehaviorSubject<Team>({} as any);
   readonly currentTeam = this._currentTeam.asObservable();
 
@@ -21,5 +23,13 @@ export class TeamService {
 
   getTeam(teamid:number):Observable<Team> {
     return this.http.get<Team>(`${this.url}/teams/${teamid}`);
+  }
+
+  getAllTeams() {
+    return this.http.get<Team[]>(`${this.url}/teams/getAll`);
+  }
+
+  getAllTeamsNoMentor(){
+    return this.http.get<Team[]>(`${this.url}/teams/getAllNoMentor`);
   }
 }

@@ -113,6 +113,10 @@ public class TeamService {
         return teamRepository.findById(teamId);
     }
 
+    public List<Team> findAllTeamsNoMentor() {
+        return teamRepository.findAll().stream().filter(team -> team.getMentor() == null).toList();
+    }
+
     
     
     
