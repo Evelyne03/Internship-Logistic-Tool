@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './user';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Injectable({
   providedIn: 'root'
