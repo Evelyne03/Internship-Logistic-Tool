@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         } else if (data.role === 'member') {
           this.router.navigate(['/member/myData']);
         }
-        else if (data.role === 'team leader') {
+        else if (data.role === 'teamleader') {
           this.router.navigate(['/teamleader/myData']);
         }
       },

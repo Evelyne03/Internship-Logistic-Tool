@@ -12,4 +12,5 @@ export class MentorComponent {
   constructor(private UserService: UserService) {
     this.user = UserService.currentUser.subscribe(user => this.user = user);
   }
+  logout(){}
 }

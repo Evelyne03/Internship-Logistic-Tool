@@ -21,19 +21,17 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // if (this.UserService.currentUser != null) {
-    //   let role: String = this.UserService.currentUserValue.role;
-    //   if (role === 'mentor') {
-    //     this.router.navigate(['/mentor/myData']);
-    //   } else if (role === 'member') {
-    //     this.router.navigate(['/member/myData']);
-    //   }
-    //   else if (role === 'team leader') {
-    //     this.router.navigate(['/teamleader/myData']);
-    //   }
-    // }
-    // comment until logout button is implemented
-    this.UserService.logout();
+    if (this.UserService.currentUser != null) {
+      let role: String = this.UserService.currentUserValue.role;
+      if (role === 'mentor') {
+        this.router.navigate(['/mentor/myData']);
+      } else if (role === 'member') {
+        this.router.navigate(['/member/myData']);
+      }
+      else if (role === 'teamleader') {
+        this.router.navigate(['/teamleader/myData']);
+      }
+    }
   }
 
   onSubmit() {
@@ -44,7 +42,7 @@ export class LoginComponent implements OnInit {
         } else if (user.role === 'member') {
           this.router.navigate(['/member/myData']);
         }
-        else if (user.role === 'team leader') {
+        else if (user.role === 'teamleader') {
           this.router.navigate(['/teamleader/myData']);
         }
       }
