@@ -12,9 +12,7 @@ export class DashboardComponent {
     this.UserService.currentUser.subscribe(user => this.isLoggedIn = user.id !== undefined);
   }
 
-  onSubmit(){
-    this.isLoggedIn = false;
+  logoutButtonFunction(){
     this.UserService.logout();
-    
   }
 }
