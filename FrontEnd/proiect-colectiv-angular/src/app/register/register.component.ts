@@ -32,6 +32,9 @@ export class RegisterComponent implements OnInit {
         } else if (data.role === 'member') {
           this.router.navigate(['/member/myData']);
         }
+        else if (data.role === 'team leader') {
+          this.router.navigate(['/teamleader/myData']);
+        }
       },
       error => {
         // Log the error message

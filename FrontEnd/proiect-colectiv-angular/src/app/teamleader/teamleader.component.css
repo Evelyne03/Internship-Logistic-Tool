@@ -1,70 +1,61 @@
 .sidenav-container {
-    height: 80vh;
-  }
+    height: 100%;
+}
 
-  .sidenav-container::-webkit-scrollbar {
-    display:none;
-  }
-  
-  .sidenav {
+.sidenav-container::-webkit-scrollbar {
+    display: none;
+}
+
+.sidenav {
+
     width: 10%;
     background-color: #673ab7;
     color: white;
     overflow-x: hidden;
-  }
-  
-  :host{
+}
+
+:host {
     display: block;
-  }
-  
-  .button {
+}
+
+.button {
     width: 90%;
     margin: 5% auto;
     margin-left: 5%;
     color: white;
     background-color: #9868eb;
-  }
-  
-  p{
+}
+
+p {
     color: white;
     background-color: #673ab7;
-  }
+}
 
-html,body{
+html,
+body {
     height: 100%;
     margin: 0;
 }
 
 body {
-  min-width: 100%;
-  overflow-x: hidden;
+    min-width: 100%;
+    overflow-x: hidden;
 }
 
 
 .mat-sidenav-container {
     min-height: 450px;
-  }
+}
 
-  mat-sidenav-content {
+mat-sidenav-content {
     padding: 20px;
     overflow: hidden;
     height: 100%;
-  }
+}
 
-  .title{
+.title {
     margin: 0;
     padding: 10px;
     text-align: center;
     font-size: 1.5em;
-  }
-
-  .logout-button {
-    position: fixed;
-    top: 10px;
-    right: 50px;
-    z-index: 9999;
-    width: 44px;
-    height: 44px;
-  }
-  
-  
+}

@@ -106,4 +106,11 @@ public class TeamController {
         return ResponseEntity.ok(users);
     }
 
+    @GetMapping("/{teamId}")
+    public ResponseEntity<Team> getTeamById(@PathVariable Long teamId) {
+        Optional<Team> teamOptional = teamService.findById(teamId);
+        Team team = teamOptional.get();
+        return ResponseEntity.ok(team);
+    }
+
 }

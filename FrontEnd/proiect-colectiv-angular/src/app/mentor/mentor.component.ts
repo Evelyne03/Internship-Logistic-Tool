@@ -8,7 +8,7 @@ import { UserService } from '../user.service';
 })
 export class MentorComponent {
 
-  user:any;
+  user: any;
   constructor(private UserService: UserService) {
     this.user = UserService.currentUser.subscribe(user => this.user = user);
   }
