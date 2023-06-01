@@ -3,6 +3,7 @@ import { Team } from '../team';
 import { TeamService } from '../team.service';
 import {User} from '../user'
 import { UserService } from '../user.service';
+import { UserListComponent } from '../user-list/user-list.component';
 
 @Component({
   selector: 'app-user-card',
@@ -11,11 +12,10 @@ import { UserService } from '../user.service';
 })
 export class UserCardComponent {
   @Input() user!: User;
-  @Output() userDeleted = new EventEmitter<any>();
 
   team!:Team;
 
-  constructor(private UserService: UserService, private TeamService:TeamService) { }
+  constructor(private UserService: UserService, private TeamService:TeamService,private userList : UserListComponent) { }
 
   ngOnInit(): void {
     if (this.user && typeof this.user === 'object') {
@@ -28,8 +28,9 @@ export class UserCardComponent {
 
 deleteUser(userId: number) {
   this.UserService.deleteUser(userId).subscribe(
-    response=> console.log(response),
-    error => console.error(error)
+    () => {
+      this.userList.refreshComponent();
+    }
   );
 }
 

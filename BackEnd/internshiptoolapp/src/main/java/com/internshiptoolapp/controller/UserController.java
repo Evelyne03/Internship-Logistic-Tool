@@ -67,9 +67,9 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
         try {
             userService.deleteUser(userId);
-            return ResponseEntity.ok("User deleted");
+            return ResponseEntity.ok(HttpStatus.OK);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body("User not found");
         }
     }
 
