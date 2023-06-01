@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       } else if (role === 'member') {
         this.router.navigate(['/member/myData']);
       }
-      else if (role === 'team leader') {
+      else if (role === 'teamleader') {
         this.router.navigate(['/teamleader/myData']);
       }
     }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         } else if (user.role === 'member') {
           this.router.navigate(['/member/myData']);
         }
-        else if (user.role === 'team leader') {
+        else if (user.role === 'teamleader') {
           this.router.navigate(['/teamleader/myData']);
         }
       }
