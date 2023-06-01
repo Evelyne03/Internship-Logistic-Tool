@@ -2,6 +2,7 @@ package com.internshiptoolapp.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -114,8 +115,12 @@ public class TeamService {
     }
 
     public List<Team> findAllTeamsNoMentor() {
-        return teamRepository.findAll().stream().filter(team -> team.getMentor() == null).toList();
+        return teamRepository.findAll()
+            .stream()
+            .filter(team -> team.getMentor() == null)
+            .collect(Collectors.toList());
     }
+    
 
     
     

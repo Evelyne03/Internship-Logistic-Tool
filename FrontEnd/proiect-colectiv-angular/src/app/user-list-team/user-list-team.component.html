@@ -2,7 +2,6 @@
   <ng-container *ngIf="hasTeam; else showTeams">
     <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
   </ng-container>
-  
   <ng-template #showTeams>
     <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
   </ng-template>
