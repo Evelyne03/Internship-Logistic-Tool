@@ -68,4 +68,12 @@ export class UserService {
     this._currentUser.next({} as any);
     localStorage.removeItem('currentUser');
   }
+
+  setCurrentUserTeamId(teamId: number): void {
+    const updatedUser = { ...this._currentUser.value, teamId: teamId };
+    this._currentUser.next(updatedUser);
+    localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+  }
+  
+
 }

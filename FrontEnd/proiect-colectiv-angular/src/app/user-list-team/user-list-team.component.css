@@ -1,4 +1,5 @@
 .card-container {
+    padding: 5%;
     display: flex;
     flex-wrap: wrap;
     justify-content: start; /* Aligns items to the start line. The item is packed flush to each other */
