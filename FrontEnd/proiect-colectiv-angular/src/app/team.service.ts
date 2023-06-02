@@ -32,4 +32,8 @@ export class TeamService {
   getAllTeamsNoMentor(){
     return this.http.get<Team[]>(`${this.url}/teams/getAllNoMentor`);
   }
+
+  setMentor(teamId: number, userId: number) {
+    return this.http.patch(`${this.url}/teams/${teamId}/addMentor`, {userId: userId});
+  }
 }

@@ -22,18 +22,28 @@ export class UserListTeamComponent implements OnInit {
 
   refreshComponent() {
     const currentUser = this.userService.currentUserValue;
-    this.hasTeam = currentUser.teamId != 0;
+    if(currentUser){
+
+      console.log('Current user:', currentUser);
+      console.log('Current user team ID:', currentUser.teamId);
+
+      this.hasTeam = currentUser.teamId != 0;
 
     if(this.hasTeam) {
       this.teamService.getTeamMembers(currentUser.teamId).subscribe((users: User[]) => {
         this.users = users;
-        console.log('Users: ', this.users); // Add this line
+        console.log('Users: ', this.users);
       });
     } else {
       this.teamService.getAllTeamsNoMentor().subscribe((teams: Team[]) => {
         this.teams = teams;
-        console.log('Teams: ', this.teams); // Add this line
+        console.log('Teams: ', this.teams);
       });
     }
+    }
+    else{
+      console.log("Current user is not defined");
+    }
+    
   }
 }

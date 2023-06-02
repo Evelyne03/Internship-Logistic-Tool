@@ -1,8 +1,8 @@
 <div style="overflow-y: auto; max-height: 400px;" class="card-container">
   <ng-container *ngIf="hasTeam; else showTeams">
-    <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+    <app-user-card *ngFor="let user of users" [user]="user" (mentorAssigned)="refreshComponent()"></app-user-card>
   </ng-container>
   <ng-template #showTeams>
-    <app-team-card *ngFor="let team of teams" [team]="team"></app-team-card>
+    <app-team-card *ngFor="let team of teams" [team]="team" (mentorAssigned)="refreshComponent()"></app-team-card>
   </ng-template>
-</div>
+</div >

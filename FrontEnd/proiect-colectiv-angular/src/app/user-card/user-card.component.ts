@@ -29,7 +29,7 @@ export class UserCardComponent {
 deleteUser(userId: number) {
   this.UserService.deleteUser(userId).subscribe(
     () => {
-      this.userList.refreshComponent();
+      this.userList.refreshComponent(); 
     }
   );
 }
