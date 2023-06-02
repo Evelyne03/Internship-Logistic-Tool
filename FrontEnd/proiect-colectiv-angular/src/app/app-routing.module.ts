@@ -18,7 +18,7 @@ import { UserDataComponent } from './user-data/user-data.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListTeamComponent } from './user-list-team/user-list-team.component';
 import { TodoComponent } from './todo/todo.component';
-//import { TeamDataComponent } from './team-data/team-data.component';
+import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
   {
@@ -39,7 +39,9 @@ const routes: Routes = [
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
           { path: 'allStudents', component: UserListComponent, pathMatch: 'full' },
           { path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full' },
-          //          {path: 'myTeam', component: TeamDataComponent, pathMatch: 'full'},
+          { path: 'activity', component: ActivityComponent, pathMatch: 'full'},
+          { path: 'tasks', component: TodoComponent, pathMatch: 'full'}
+          
 
         ]
       },

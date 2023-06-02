@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
@@ -31,6 +31,16 @@ import { RegisterComponent } from './register/register.component';
 import { TodoComponent } from './todo/todo.component';
 import { MatIconModule } from '@angular/material/icon';
 import { TeamleaderComponent } from './teamleader/teamleader.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ActivityComponent } from './activity/activity.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { RouterModule } from '@angular/router';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+
+
+
 
 
 
@@ -52,7 +62,11 @@ import { TeamleaderComponent } from './teamleader/teamleader.component';
     UserListTeamComponent,
     RegisterComponent,
     TodoComponent,
-    TeamleaderComponent
+    TeamleaderComponent,
+    FeedbackComponent,
+    AppComponent,
+    ActivityComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +84,21 @@ import { TeamleaderComponent } from './teamleader/teamleader.component';
     MatListModule, 
     MatTableModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ReactiveFormsModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    RouterModule,
+    CdkVirtualScrollViewport,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

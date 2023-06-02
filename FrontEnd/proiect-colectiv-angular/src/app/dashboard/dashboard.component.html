@@ -4,7 +4,7 @@
     <div class="buttons">
       <button mat-raised-button class="button" *ngIf="!isLoggedIn" routerLink="login">Login</button>
       <button mat-raised-button class="button" *ngIf="!isLoggedIn" routerLink="register">Register</button>
-      <button mat-raised-button class="button" *ngIf="isLoggedIn" routerLink="login" (ngSubmit)="onSubmit()">Log Out<mat-icon>logout</mat-icon></button>
+       <button mat-raised-button class="button" *ngIf="isLoggedIn" routerLink="login" (ngSubmit)="onSubmit()">Log Out<mat-icon>logout</mat-icon></button>
     </div>
   </mat-toolbar>
   <div class="content">
