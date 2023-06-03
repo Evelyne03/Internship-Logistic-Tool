@@ -11,13 +11,13 @@ import { TeamService } from '../team.service';
 })
 
 
-export class UserDataComponent implements OnInit{
+export class UserDataComponent implements OnInit {
   user!: User;
   team!: Team;
 
-  constructor(private userService: UserService, private TeamService: TeamService) {}
-  
-   ngOnInit(): void {
+  constructor(private userService: UserService, private TeamService: TeamService) { }
+
+  ngOnInit(): void {
     this.userService.currentUser.subscribe(user => {
       this.user = user;
       this.user.image = 'https://www.w3schools.com/howto/img_avatar.png';
@@ -25,6 +25,7 @@ export class UserDataComponent implements OnInit{
       this.TeamService.getTeam(this.user.teamId).subscribe((team: Team) => {
         this.team = team;
       });
+
 
     })
   }
