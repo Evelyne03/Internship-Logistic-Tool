@@ -5,11 +5,26 @@
       <button mat-raised-button class="button" routerLink="myData">See my data</button>
       <button mat-raised-button class="button" routerLink="allStudents">See all users</button>
       <button mat-raised-button class="button" routerLink="myStudents">See my students</button>
-      <button mat-raised-button class="button" routerLink="myFeedback">TODO</button>
+      <button mat-raised-button class="button" routerLink="activity">Activity</button>
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
     <router-outlet></router-outlet>
+    <div *ngIf="showAddActivity">
+      <mat-toolbar color="primary">
+        <button mat-raised-button color="accent" (click)="addActivity()">Add Activity</button>
+      </mat-toolbar>
+    </div>
+    <div class="card-container">
+      <mat-card *ngFor="let task of tasks">
+        <mat-card-header>
+          <mat-card-title>{{ task.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          {{ task.description }}
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

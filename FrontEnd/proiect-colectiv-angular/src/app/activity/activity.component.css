@@ -1,0 +1,55 @@
+.grid-list-top {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .container {
+    max-height: 100vh;  
+    overflow-y: auto;
+  }
+   
+
+  body, html, app-activity {
+    margin: 0;
+    padding: 0;
+  }
+  
+  app-activity {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+  .viewport {
+    height: 500px;  
+    width: 100%;
+    border: 1px solid black; 
+  }
+
+  .activity-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .tasks-container {
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+  }
+  
+
+
+
+
+  
+
+  
+  
+  

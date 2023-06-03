@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-mentor',
@@ -7,10 +6,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./mentor.component.css']
 })
 export class MentorComponent {
+  showAddActivity: boolean = false;
+  tasks: Task[] = []; 
 
-  user: any;
-  constructor(private UserService: UserService) {
-    this.user = UserService.currentUser.subscribe(user => this.user = user);
+  toggleAddActivity() {
+    this.showAddActivity = !this.showAddActivity;
   }
-  logout(){}
+
+  addActivity() {
+    // Implement your logic to add a new task or navigate to a different page for adding an activity
+  }
+}
+
+interface Task {
+  title: string;
+  description: string;
 }
