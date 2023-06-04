@@ -28,10 +28,9 @@ public class TeamService {
     @Autowired
     private UserRepo userRepository;
 
-    public User addUserToTeam(Long teamId, Long userId) {
+    public User addUserToTeam(Long teamId, String userEmail) {
         Team team = teamRepository.findById(teamId).orElseThrow(() -> new EntityNotFoundException("Team not found with id " + teamId));
-        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found with id " + userId));
-    
+        User user = userRepository.findByEmail(userEmail).orElseThrow(() -> new EntityNotFoundException("User not found with email " + userEmail));
         if(!user.getRole().equalsIgnoreCase("member")) {
             throw new IllegalArgumentException("User role is not 'member'");
         }
@@ -119,6 +118,25 @@ public class TeamService {
             .stream()
             .filter(team -> team.getMentor() == null)
             .collect(Collectors.toList());
+    }
+
+    public Team updateTeam(long teamId, String newName) {
+        Team team = teamRepository.findById(teamId).orElseThrow(() -> new EntityNotFoundException("Team not found with id " + teamId));
+        team.setName(newName);
+        return teamRepository.save(team);
+    }
+
+    public List<User> getAvailableUsers() {
+        return userRepository.findAll()
+            .stream()
+            .filter(user -> user.getTeam() == null && user.getRole().equalsIgnoreCase("member"))
+            .collect(Collectors.toList());
+    }
+
+    public User removeUserFromTeam(String userId) {
+        User user = userRepository.findById(Long.parseLong(userId)).orElseThrow(() -> new EntityNotFoundException("User not found with id " + userId));
+        user.setTeam(null);
+        return userRepository.save(user);
     }
     
 

@@ -35,7 +35,7 @@ export class ActivityComponent implements OnInit{
     const currentUserTeamId = this.userService.currentUserValue.teamId;
 
     if(currentUserTeamId){
-      this.teamService.getTeamMembers(currentUserTeamId).subscribe(
+      this.teamService.getTeamUsers(currentUserTeamId).subscribe(
         (users:User[]) =>{
           this.peopleList = users.map(user =>user.username);
         }
@@ -75,7 +75,7 @@ export class ActivityComponent implements OnInit{
       const currentUserTeamId = this.userService.currentUserValue.teamId;
     
       if(currentUserTeamId){
-        this.teamService.getTeamMembers(currentUserTeamId).subscribe(
+        this.teamService.getTeamUsers(currentUserTeamId).subscribe(
           (users:User[]) =>{
             this.peopleList = users.map(user => user.username);
           }
