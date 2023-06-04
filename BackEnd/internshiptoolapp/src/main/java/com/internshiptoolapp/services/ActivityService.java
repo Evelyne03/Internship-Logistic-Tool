@@ -40,5 +40,12 @@ public class ActivityService {
         return taskRepository.save(task);
     }
 
+    public void deleteActivity(Long activityId) {
+        Activity activity = activityRepository.findById(activityId).orElseThrow(()-> new EntityNotFoundException("Activity not found with id " + activityId));
+        activityRepository.delete(activity);
+    }
+
+    
+
     // Add methods to handle CRUD operations
 }

@@ -28,7 +28,7 @@ public class Task {
     @JoinColumn(name = "activity_id")
     private Activity activity;
 
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MentorGrade> grades;
 
     // Getters and Setters...

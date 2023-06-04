@@ -119,4 +119,12 @@ public class TeamController {
         return ResponseEntity.ok(team);
     }
 
+    @GetMapping("/{teamId}/activities")
+    public ResponseEntity<List<Activity>> getActivitiesByTeamId(@PathVariable Long teamId) {
+    Optional<Team> teamOptional = teamService.findById(teamId);
+    List<Activity> activities = teamOptional.get().getActivities();
+    return ResponseEntity.ok(activities);
+}
+
+
 }

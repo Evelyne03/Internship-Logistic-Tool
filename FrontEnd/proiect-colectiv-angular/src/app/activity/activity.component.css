@@ -20,7 +20,7 @@
     margin: 0;
     padding: 0;
   }
-  
+
   app-activity {
     position: absolute;
     top: 0;
@@ -37,15 +37,53 @@
   .activity-container {
     display: flex;
     justify-content: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
   }
   
   .tasks-container {
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 450px);
     overflow-y: auto;
+    width: 80%;
   }
+
+  .form-field-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } 
   
+  .activity-container {
+    display: flex;
+    justify-content: center;
+  }
 
+  .action-button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 
+  .tasks-container mat-card {
+    padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;  /* Add some margin to separate the cards */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+
+  }
+
+  .tasks-container {
+    height: 75vh; /* Adjust this value according to your layout */
+    overflow-y: auto;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+
+  }
+
+  .tasks-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
 
   
