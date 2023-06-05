@@ -69,6 +69,7 @@ export class ActivityComponent implements OnInit{
         // call service to save to backend
         this.activityService.createActivityAndAddToTeam(newActivity.team_id, newActivity).subscribe(
           createdActivity => {
+            this.teamService.addActivityToTeam(newActivity.team_id, createdActivity.id).subscribe();
             this.tasks.push(createdActivity);
           },
           error => {

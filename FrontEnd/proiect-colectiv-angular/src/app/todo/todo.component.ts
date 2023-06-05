@@ -17,6 +17,14 @@ export class TodoComponent implements OnInit {
   constructor(private changeDetector: ChangeDetectorRef, private taskService: TaskService, private activityService: ActivityService) { }
 
   ngOnInit(): void {
+    this.taskService.getTasksByActivity(this.activityId).subscribe(
+      (tasks: Task[]) => {
+        this.tasks = tasks;
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 
   addTask(taskTitle: string, taskDescription: string): void {

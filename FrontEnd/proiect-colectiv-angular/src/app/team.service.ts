@@ -9,6 +9,7 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class TeamService {
+  
   private _currentTeam = new BehaviorSubject<Team>({} as any);
   readonly currentTeam = this._currentTeam.asObservable();
 
@@ -53,4 +54,9 @@ export class TeamService {
   updateTeamName(teamId:number, name:string):Observable<Team> {
     return this.http.patch<Team>(`${this.url}/teams/${teamId}/updateTeamName`, {"name": name});
   }
+
+  addActivityToTeam(team_id: number, id: number) {
+    return this.http.patch(`${this.url}/teams/${team_id}/addActivity`, {"activityId": id});
+  }
+
 }
