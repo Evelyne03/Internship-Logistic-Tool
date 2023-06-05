@@ -34,7 +34,7 @@ createActivityAndAddToTeam(teamId: number, newActivity: Activity): Observable<Ac
     tap((createdActivity: Activity) => {
       if (newActivity.tasks && newActivity.tasks.length > 0) {
         newActivity.tasks.forEach(task => {
-          task.activityId = createdActivity.id;
+          task.activity = createdActivity.id;
           this.taskService.saveTask(task).subscribe();
         });
       }

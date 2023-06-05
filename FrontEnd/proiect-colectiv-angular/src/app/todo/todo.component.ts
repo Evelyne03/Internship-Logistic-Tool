@@ -25,7 +25,7 @@ export class TodoComponent implements OnInit {
       name: taskTitle,
       description: taskDescription,
       isCompleted: false,
-      activityId: this.activityId, // use the activityId here
+      activity: this.activityId, // use the activityId here
       student_id: 0 // This is a placeholder.
     };
     console.log(this.activityId);
