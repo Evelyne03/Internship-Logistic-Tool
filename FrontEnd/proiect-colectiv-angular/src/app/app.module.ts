@@ -43,6 +43,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { TeamCardComponent } from './team-card/team-card.component';
 import { TeamService } from './team.service';
+import { TeamDataComponent } from './team-data/team-data.component';
 
 
 
@@ -70,6 +71,8 @@ import { TeamService } from './team.service';
     ActivityComponent,
     TodoComponent,
     TeamCardComponent,
+    TeamCardComponent,
+    TeamDataComponent
   ],
   imports: [
     BrowserModule,
@@ -105,6 +108,7 @@ import { TeamService } from './team.service';
   ],
   providers: [
     UserListComponent,
+    FormsModule 
   ],
   bootstrap: [AppComponent]
 })

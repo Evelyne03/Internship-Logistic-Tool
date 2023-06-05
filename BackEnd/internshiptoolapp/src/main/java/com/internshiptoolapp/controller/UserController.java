@@ -10,7 +10,6 @@ import com.internshiptoolapp.entities.User;
 import com.internshiptoolapp.services.TeamService;
 import com.internshiptoolapp.services.UserService;
 
-import java.io.Console;
 import java.util.List;
 import java.util.Map;
 
@@ -72,6 +71,8 @@ public class UserController {
             return ResponseEntity.badRequest().body("User not found");
         }
     }
+
+    
 
     // Add more methods to handle different requests
 }

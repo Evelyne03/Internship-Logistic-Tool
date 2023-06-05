@@ -3,7 +3,6 @@ import { Team } from '../team';
 import { TeamService } from '../team.service';
 import {User} from '../user'
 import { UserService } from '../user.service';
-import { UserListComponent } from '../user-list/user-list.component';
 
 @Component({
   selector: 'app-user-card',
@@ -12,10 +11,12 @@ import { UserListComponent } from '../user-list/user-list.component';
 })
 export class UserCardComponent {
   @Input() user!: User;
+  @Input() buttonName!: string;
+  @Input() buttonAction!: Function;
 
   team!:Team;
 
-  constructor(private UserService: UserService, private TeamService:TeamService,private userList : UserListComponent) { }
+  constructor(private UserService: UserService, private TeamService:TeamService) { }
 
   ngOnInit(): void {
     if (this.user && typeof this.user === 'object') {
@@ -25,13 +26,4 @@ export class UserCardComponent {
       });
     }
   }
-
-deleteUser(userId: number) {
-  this.UserService.deleteUser(userId).subscribe(
-    () => {
-      this.userList.refreshComponent(); 
-    }
-  );
-}
-
 }
