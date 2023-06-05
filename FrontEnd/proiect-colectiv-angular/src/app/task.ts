@@ -3,5 +3,6 @@ export interface Task {
     name: string;
     description: string;
     iCompleted: boolean;
-    activity_id: number;
+    activityId: number;
+    userId: number;
 }

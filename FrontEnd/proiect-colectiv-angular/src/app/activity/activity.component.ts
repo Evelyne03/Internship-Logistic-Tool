@@ -30,46 +30,6 @@ export class ActivityComponent implements OnInit{
       description: ['', Validators.required]  
     });
   }
-
-  /*ngOnInit(): void {
-    const currentUserTeamId = this.userService.currentUserValue.teamId;
-
-    if(currentUserTeamId){
-      this.teamService.getTeamMembers(currentUserTeamId).subscribe(
-        (users:User[]) =>{
-          this.peopleList = users.map(user =>user.username);
-        }
-      );
-    }else
-    {
-      console.log("No team id");
-    }
-  }
-    addActivity() {
-      if (this.activityForm.valid) {
-        const newActivity: Activity = {
-          id: 0, // This is a placeholder.
-          name: this.activityForm.value.name,
-          description: this.activityForm.value.description,
-          team_id: this.userService.currentUserValue.teamId // Add the team id here
-        };
-    
-        this.activityForm.reset();
-        
-        // call service to save to backend
-        this.activityService.createActivity(newActivity).subscribe(
-          response => {
-            // use the id from the response here
-            newActivity.id = response.id;
-            this.tasks.push(newActivity);
-          },
-          error => {
-            // handle error here
-            console.error(error);
-          }
-        );
-      }
-    }*/
     
     ngOnInit(): void {
       const currentUserTeamId = this.userService.currentUserValue.teamId;
@@ -134,6 +94,4 @@ export class ActivityComponent implements OnInit{
     }
   );
 }
-
-
-  }
+}
