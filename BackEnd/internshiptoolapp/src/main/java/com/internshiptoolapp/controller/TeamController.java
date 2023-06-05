@@ -50,8 +50,8 @@ public class TeamController {
     }
 
     @PutMapping("/removeUser")
-    public ResponseEntity<?> removeUserFromTeam(@RequestBody Map<String, String> body) {
-        String userId = body.get("userId");
+    public ResponseEntity<?> removeUserFromTeam(@RequestBody Map<String, Long> body) {
+        Long userId = body.get("userId");
         if (userId == null) {
             return ResponseEntity.badRequest().body("userId is required");
         }
@@ -142,10 +142,10 @@ public class TeamController {
 
     @GetMapping("/{teamId}/activities")
     public ResponseEntity<List<Activity>> getActivitiesByTeamId(@PathVariable Long teamId) {
-    Optional<Team> teamOptional = teamService.findById(teamId);
-    List<Activity> activities = teamOptional.get().getActivities();
-    return ResponseEntity.ok(activities);
-}
+        Optional<Team> teamOptional = teamService.findById(teamId);
+        List<Activity> activities = teamOptional.get().getActivities();
+        return ResponseEntity.ok(activities);
+    }
 
     @PatchMapping("/{id}/updateTeamName")
     public ResponseEntity<Team> putMethodName(@PathVariable long id, @RequestBody Map<String, String> body) {
