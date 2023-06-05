@@ -31,15 +31,10 @@ public class Task {
     public Task() {
     }
 
-    public Task(String name, String description, long activity) {
+    public Task(String name, String description, Boolean isCompleted, long activity) {
         this.name = name;
         this.description = description;
-        this.activity = activity;
-    }
-
-    public Task(String name, String description, long activity, List<MentorGrade> grades) {
-        this.name = name;
-        this.description = description;
+        this.isCompleted = isCompleted;
         this.activity = activity;
     }
 

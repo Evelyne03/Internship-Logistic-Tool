@@ -21,6 +21,6 @@ export class TaskService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getTasksByActivity(id: number) {
-    return this.http.get<Task[]>(`${this.url}/activities/${id}/tasks`);  
+    return this.http.get<Task[]>(`${this.url}/tasks/${id}`);  
   }
 }

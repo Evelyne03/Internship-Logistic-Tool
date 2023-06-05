@@ -25,9 +25,6 @@ public class Activity {
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Task> tasks;
-
     // Getters and Setters...
     public Activity() {
     }
@@ -36,7 +33,6 @@ public class Activity {
         this.name = name;
         this.description = description;
         this.team = team;
-        this.tasks = tasks;
     }
 
     //getters and setters
@@ -53,11 +49,6 @@ public class Activity {
     public Team getTeam() {
         return team;
     }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
     public void setId(Long id) { this.id = id; }
 
     public void setName(String name) { this.name = name; }
@@ -68,7 +59,4 @@ public class Activity {
         this.team = team;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
 }

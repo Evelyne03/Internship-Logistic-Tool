@@ -26,20 +26,17 @@ export class TodoComponent implements OnInit {
       description: taskDescription,
       isCompleted: false,
       activity: this.activityId, // use the activityId here
-      student_id: 0 // This is a placeholder.
+      student_id: 2 // This is a placeholder.
     };
-    console.log(this.activityId);
+    //console.log(this.activityId);
+    console.log(newTask);
     this.taskService.saveTask(newTask).subscribe((createdTask) => {
-      newTask.id = createdTask.id;
-      this.tasks.push(createdTask);
-      this.activityService.addTaskToActivity(this.activityId, createdTask.id).subscribe();
+      console.log(createdTask);
+      this.tasks.push(newTask);
     });
-
-    
 
   }
   
-
   deleteTask(index: number): void {
     this.tasks.splice(index, 1);
     this.changeDetector.detectChanges();

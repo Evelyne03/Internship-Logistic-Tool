@@ -24,5 +24,10 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+    public List<Task> getTasksByActivityId(Long activityid) {
+        return taskRepository.findByActivity(activityid);
+    }
+    
+
     // Add methods to handle CRUD operations
 }
