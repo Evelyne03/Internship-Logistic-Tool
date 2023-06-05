@@ -6,11 +6,11 @@
     <input matInput placeholder="Task description" #description>
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Assignee" #assignee>
-      <mat-option *ngFor="let person of assignees" [value]="person">{{person}}</mat-option>
+    <mat-select placeholder="Assignee" [(ngModel)] = "selectedAssignee">
+      <mat-option *ngFor="let person of assignees" [value]="person.id">{{person.name}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="addTask(title.value, description.value); title.value=''; description.value=''">Add Task</button>
+  <button mat-raised-button color="primary" (click)="addTask(title.value, description.value, selectedAssignee); title.value=''; description.value=''">Add Task</button>
 </div>
 
 <div class="test">
