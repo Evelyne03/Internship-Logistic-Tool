@@ -23,4 +23,8 @@ export class TaskService {
   getTasksByActivity(id: number) {
     return this.http.get<Task[]>(`${this.url}/tasks/${id}`);  
   }
+
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.url}/tasks/getAll`);
+  }
 }

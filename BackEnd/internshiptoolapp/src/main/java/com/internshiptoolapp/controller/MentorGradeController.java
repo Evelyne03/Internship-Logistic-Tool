@@ -37,28 +37,36 @@ public class MentorGradeController {
         return ResponseEntity.ok(grades);
     }
 
-    @PatchMapping("/{gradeId}/update")
-        public ResponseEntity<?> updateGrade(@PathVariable Long gradeId, @RequestBody Map<String, Long> body){
-            Long mentorId = body.get("mentorId");
-            Long studentId = body.get("studentId");
-            if(mentorId == null || studentId == null){
-                return ResponseEntity.badRequest().body("MentorId or studentId is null");
-            }
-
-            try{
-                User mentor = mentorGradeService.addMentor(gradeId, mentorId);
-                User student = mentorGradeService.addStudent(gradeId, studentId);
-                return ResponseEntity.ok().body("Mentor " + mentor + " " + " and student " + student + " added to grade " + gradeId);
-
-            }catch(IllegalArgumentException e){
-                return ResponseEntity.badRequest().body(e.getMessage());
-            }
-        }
+    
 
     @GetMapping("/task/{taskId}")
     public ResponseEntity<List<MentorGrade>> getGradesByTask(@PathVariable Long taskId){
         List<MentorGrade> grades = mentorGradeService.getGradesByTask(taskId);
         return ResponseEntity.ok(grades);
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MentorGrade> getGradeById(@PathVariable Long id){
+        MentorGrade grade = mentorGradeService.getGradeById(id);
+        return ResponseEntity.ok(grade);
+    }
+
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<?> updateGradeAndFeedback(@PathVariable Long id, @RequestBody Map<String, String> body){
+        int grade = Integer.parseInt(body.get("grade"));  
+        String feedback = body.get("feedback").toString();
+        mentorGradeService.updateGradeAndFeedback(id, grade, feedback);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("/{id}/assign")
+    public ResponseEntity<?> assignMentorAndStudent(@PathVariable Long id, @RequestBody Map<String, String> body){
+        Long mentorId = Long.parseLong(body.get("mentorId"));
+        Long studentId = Long.parseLong(body.get("studentId"));
+        mentorGradeService.assignMentorAndStudent(id, mentorId, studentId);
+        return ResponseEntity.ok().build();
+    }
+
     
 }

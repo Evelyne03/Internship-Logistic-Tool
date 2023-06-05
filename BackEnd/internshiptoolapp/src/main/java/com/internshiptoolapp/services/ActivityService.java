@@ -45,6 +45,10 @@ public class ActivityService {
         activityRepository.delete(activity);
     }
 
+    public Activity getActivity(Long activityId) {
+        return activityRepository.findById(activityId).orElseThrow(()-> new EntityNotFoundException("Activity not found with id " + activityId));
+    }
+
     
 
     // Add methods to handle CRUD operations

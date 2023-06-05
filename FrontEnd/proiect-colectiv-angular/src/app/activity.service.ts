@@ -10,6 +10,7 @@ import { Task } from './task';
   providedIn: 'root'
 })
 export class ActivityService {
+  
 
 
   private url = 'http://localhost:8080';
@@ -47,4 +48,7 @@ addTaskToActivity(activityId:number, taskId:number){
   const requestBody = { taskId: taskId }; // Create an object with the taskId property
   return this.http.patch(`${this.url}/activities/${activityId}/addTask`, requestBody);
 }
+getActivity(activityId:number) {
+  return this.http.get<Activity>(`${this.url}/activities/${activityId}`);
+  }
 }

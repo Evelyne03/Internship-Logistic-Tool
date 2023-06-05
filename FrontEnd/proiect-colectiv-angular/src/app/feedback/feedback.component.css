@@ -24,7 +24,7 @@
   }
   
   .scroll-container {
-    height: 80vh; /* Set a fixed height for the container, accounting for the header height */
+    height: 500px; /* Set a fixed height for the container, accounting for the header height */
     overflow-y: auto; /* Enable vertical scrolling */
   }
   
