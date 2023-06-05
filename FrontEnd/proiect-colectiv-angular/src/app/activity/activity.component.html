@@ -30,7 +30,7 @@
           <mat-card-content>
             <h2>{{activity.name}}</h2>
             <p>{{activity.description}}</p> 
-            <app-todo></app-todo> <!-- Include the Todo component here -->
+            <app-todo [activityId]="activity.id"></app-todo>
           </mat-card-content>
           <mat-card-actions>
             <button mat-raised-button color="warn" (click)="deleteActivity(i)">Delete</button>
@@ -43,4 +43,5 @@
 
   
  
-  
+
+

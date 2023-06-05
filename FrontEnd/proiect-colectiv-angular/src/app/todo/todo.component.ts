@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { TaskService } from '../task.service'; // Import TaskService
+import { Task } from '../task';
+import { ActivityService } from '../activity.service';
 
 @Component({
   selector: 'app-todo',
@@ -6,22 +9,38 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  tasks: { title: string, description: string, assignee: string }[] = [];
+  tasks:Task[] = [];
+  @Input() activityId!: number;
   assignees: string[] = ['Member1', 'Member2', 'Member3', 'Member4'];
 
-  constructor(private changeDetector: ChangeDetectorRef) { }
+  // Include TaskService in your constructor
+  constructor(private changeDetector: ChangeDetectorRef, private taskService: TaskService, private activityService: ActivityService) { }
 
   ngOnInit(): void {
   }
 
-  addTask(title: string, description: string, assignee: string) {
-    if (title && description && assignee) {
-      this.tasks.push({ title: title, description: description, assignee: assignee });
-      this.changeDetector.detectChanges();
-    }
-  }
+  addTask(taskTitle: string, taskDescription: string): void {
+    const newTask: Task = {
+      id: 0, // This is a placeholder.
+      name: taskTitle,
+      description: taskDescription,
+      isCompleted: false,
+      activityId: this.activityId, // use the activityId here
+      student_id: 0 // This is a placeholder.
+    };
+    console.log(this.activityId);
+    this.taskService.saveTask(newTask).subscribe((createdTask) => {
+      newTask.id = createdTask.id;
+      this.tasks.push(createdTask);
+      this.activityService.addTaskToActivity(this.activityId, createdTask.id).subscribe();
+    });
 
-  deleteTask(index: number) {
+    
+
+  }
+  
+
+  deleteTask(index: number): void {
     this.tasks.splice(index, 1);
     this.changeDetector.detectChanges();
   }

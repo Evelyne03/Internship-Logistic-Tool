@@ -60,7 +60,8 @@ export class ActivityComponent implements OnInit{
           id: 0, // This is a placeholder.
           name: this.activityForm.value.name,
           description: this.activityForm.value.description,
-          team_id: this.userService.currentUserValue.teamId // Add the team id here
+          team_id: this.userService.currentUserValue.teamId, // Add the team id here
+          tasks: []
         };
     
         this.activityForm.reset();

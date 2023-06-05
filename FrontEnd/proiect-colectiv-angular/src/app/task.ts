@@ -2,7 +2,7 @@ export interface Task {
     id: number;
     name: string;
     description: string;
-    iCompleted: boolean;
+    isCompleted: boolean;
     activityId: number;
-    userId: number;
+    student_id: number;
 }
