@@ -27,6 +27,10 @@ public class TaskService {
     public List<Task> getTasksByActivityId(Long activityId) {
         return taskRepository.findByActivity(activityId);
     }
+
+    public void deleteTask(Long taskId) {
+        taskRepository.deleteById(taskId);
+    }
     
 
     // Add methods to handle CRUD operations

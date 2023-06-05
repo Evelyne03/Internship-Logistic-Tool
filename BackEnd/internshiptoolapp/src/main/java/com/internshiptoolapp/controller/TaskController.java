@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,6 +52,16 @@ public class TaskController {
     public ResponseEntity<List<Task>> getTasksByActivityId(@PathVariable Long activityId){
         List<Task> tasks = taskService.getTasksByActivityId(activityId);
         return ResponseEntity.ok(tasks);
+    }
+
+    @DeleteMapping("/delete/{taskId}")
+    public ResponseEntity<?> deleteTask(@PathVariable Long taskId){
+        try{
+            taskService.deleteTask(taskId);
+            return ResponseEntity.ok().build();
+        }catch(IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }
