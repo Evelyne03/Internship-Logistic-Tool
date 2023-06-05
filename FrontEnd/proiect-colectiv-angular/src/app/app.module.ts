@@ -47,6 +47,7 @@ import { TeamDataComponent } from './team-data/team-data.component';
 
 
 
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -72,7 +73,8 @@ import { TeamDataComponent } from './team-data/team-data.component';
     TodoComponent,
     TeamCardComponent,
     TeamCardComponent,
-    TeamDataComponent
+    TeamDataComponent,
+   
   ],
   imports: [
     BrowserModule,

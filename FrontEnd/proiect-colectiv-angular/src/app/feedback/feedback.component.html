@@ -1,1 +1,34 @@
-<p>feedback works!</p>
+<mat-sidenav-container class="container">
+    <mat-sidenav-content>
+      <div class="scroll-container">
+        <div class="card-container">
+          <mat-card *ngFor="let task of tasks" class="task-card">
+            <mat-card-header>
+              <mat-card-title>{{ task.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              {{ task.description }}
+            </mat-card-content>
+            <mat-card-actions>
+              <mat-form-field appearance="outline" class="grade-field">
+                <mat-label>Grade</mat-label>
+                <mat-select [(ngModel)]="task.grade" placeholder="Select grade">
+                  <mat-option *ngFor="let grade of gradeOptions" [value]="grade">
+                    {{ grade }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="feedback-field">
+                <mat-label>Feedback</mat-label>
+                <textarea matInput [(ngModel)]="task.feedback" placeholder="Enter feedback"></textarea>
+              </mat-form-field>
+            </mat-card-actions>
+            <mat-card-actions class="send-button-container">
+              <button mat-raised-button color="primary" (click)="sendFeedback(task)">Send</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
