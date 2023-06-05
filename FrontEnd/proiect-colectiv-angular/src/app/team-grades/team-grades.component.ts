@@ -36,8 +36,6 @@ export class TeamGradesComponent implements OnInit {
       this.activities.forEach(activity => {
         this.taskService.getTasksByActivity(activity.id).subscribe(tasks => {
           this.tasks = this.tasks.concat(tasks);
-          console.log(this.tasks);
-          console.log(tasks);
           this.tasks.forEach(task => {
             this.gradeService.getGradeByTask(task.id).subscribe(grade => {
               this.grades = this.grades.concat(grade);

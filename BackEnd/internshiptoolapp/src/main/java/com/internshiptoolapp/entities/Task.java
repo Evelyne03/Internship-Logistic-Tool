@@ -26,18 +26,28 @@ public class Task {
     @Column(nullable = false , name = "activity_id")
     private long activity;
 
+    @Column(name = "student_id")
+    private long studentId;
     // Getters and Setters...
 
     public Task() {
     }
 
-    public Task(String name, String description, Boolean isCompleted, long activity) {
+    public Task(String name, String description, Boolean isCompleted, long activity, long studentId) {
         this.name = name;
         this.description = description;
         this.isCompleted = isCompleted;
         this.activity = activity;
+        this.studentId = studentId;
     }
 
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
+    }
+
+    public long getStudentId() {
+        return studentId;
+    }
     public void setName(String name) {
         this.name = name;
     }

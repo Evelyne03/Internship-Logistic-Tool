@@ -13,10 +13,10 @@
     <tbody>
       <tr *ngFor="let task of tasks">
         <td>{{ task.name }}</td>
-        <td>{{ getNameByStudentId(task.student_id) }}</td>
+        <td>{{ getNameByStudentId(task.studentId) }}</td>
         <td>{{ task.description }}</td>
-        <td>{{ task.isCompleted ? getTaskGrade(task.id) : "Not Complete yet!"}}</td>
-        <td>{{ task.isCompleted ? getTaskFeedback(task.id) :  "Not Complete yet!"}}</td>
+        <td>{{ getTaskGrade(task.id)}}</td>
+        <td>{{ getTaskFeedback(task.id)}}</td>
       </tr>
       <tr>
         <td colspan="3"></td>
