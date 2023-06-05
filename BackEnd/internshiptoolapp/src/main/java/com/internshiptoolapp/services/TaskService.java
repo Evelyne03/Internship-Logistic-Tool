@@ -24,8 +24,8 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public List<Task> getTasksByActivityId(Long activityid) {
-        return taskRepository.findByActivity(activityid);
+    public List<Task> getTasksByActivityId(Long activityId) {
+        return taskRepository.findByActivity(activityId);
     }
     
 

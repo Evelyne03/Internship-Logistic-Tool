@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class TaskService {
-  private url = 'http://localhost:8080/tasks'
+  private url = 'http://localhost:8080'
 
   saveTask(task: Task): Observable<Task>{
     return this.http.post<Task>('http://localhost:8080/tasks/create', task);

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,9 +47,9 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     } 
 
-    @GetMapping("/{activityid}")
-    public ResponseEntity<List<Task>> getTasksByActivityId(Long activityid){
-        List<Task> tasks = taskService.getTasksByActivityId(activityid);
+    @GetMapping("/{activityId}")
+    public ResponseEntity<List<Task>> getTasksByActivityId(@PathVariable Long activityId){
+        List<Task> tasks = taskService.getTasksByActivityId(activityId);
         return ResponseEntity.ok(tasks);
     }
 

@@ -8,6 +8,6 @@ import com.internshiptoolapp.entities.Task;
 
 public interface TaskRepo extends JpaRepository<Task, Long> {
 
-    List<Task> findByActivity(Long activityid);
+    List<Task> findByActivity(Long activityId);
 
 }

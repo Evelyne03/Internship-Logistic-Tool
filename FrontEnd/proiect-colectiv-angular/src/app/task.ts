@@ -6,5 +6,5 @@ export interface Task {
     description: string;
     isCompleted: boolean;
     activity: number;
-    student_id: number;
+    studentId: number;
 }
