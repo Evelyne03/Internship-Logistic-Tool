@@ -31,6 +31,16 @@ public class TaskService {
     public void deleteTask(Long taskId) {
         taskRepository.deleteById(taskId);
     }
+
+    public List<Task> getTaskByUserId(Long studentId) {
+        return taskRepository.findByStudentId(studentId);
+    }
+
+    public void completeTask(Long taskId) {
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + taskId));
+        task.setIsCompleted(true);
+        taskRepository.save(task);
+    }
     
 
     // Add methods to handle CRUD operations

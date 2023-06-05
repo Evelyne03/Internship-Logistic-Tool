@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,23 +44,39 @@ public class TaskController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Task>> getAllTasks(){
+    public ResponseEntity<List<Task>> getAllTasks() {
         List<Task> tasks = taskService.getAllTasks();
         return ResponseEntity.ok(tasks);
-    } 
+    }
 
     @GetMapping("/{activityId}")
-    public ResponseEntity<List<Task>> getTasksByActivityId(@PathVariable Long activityId){
+    public ResponseEntity<List<Task>> getTasksByActivityId(@PathVariable Long activityId) {
         List<Task> tasks = taskService.getTasksByActivityId(activityId);
         return ResponseEntity.ok(tasks);
     }
 
     @DeleteMapping("/delete/{taskId}")
-    public ResponseEntity<?> deleteTask(@PathVariable Long taskId){
-        try{
+    public ResponseEntity<?> deleteTask(@PathVariable Long taskId) {
+        try {
             taskService.deleteTask(taskId);
             return ResponseEntity.ok().build();
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/get/{studentId}")
+    public ResponseEntity<List<Task>> getTaskByUserId(@PathVariable Long studentId) {
+
+        return ResponseEntity.ok(taskService.getTaskByUserId(studentId));
+    }
+
+    @PutMapping("/complete/{taskId}")
+    public ResponseEntity<?> completeTask(@PathVariable Long taskId) {
+        try {
+            taskService.completeTask(taskId);
+            return ResponseEntity.ok().build();
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }

@@ -46,6 +46,7 @@ import { TeamService } from './team.service';
 import { TeamDataComponent } from './team-data/team-data.component';
 import { CommonModule } from '@angular/common';
 import { TeamGradesComponent } from './team-grades/team-grades.component';
+import { TaskListComponent } from './member-grades/member-grades.component';
 
 
 
@@ -76,7 +77,8 @@ import { TeamGradesComponent } from './team-grades/team-grades.component';
     TeamCardComponent,
     TeamCardComponent,
     TeamDataComponent,
-    TeamGradesComponent
+    TeamGradesComponent,
+    TaskListComponent,
   ],
   imports: [
     BrowserModule,

@@ -89,4 +89,9 @@ export class TodoComponent implements OnInit {
       }
     );
   }
+
+  getStudentName(studentId: number): string {
+    const student = this.assignees.find(a => a.id === studentId);
+    return student ? student.name : 'Unknown';
+  }
 }
