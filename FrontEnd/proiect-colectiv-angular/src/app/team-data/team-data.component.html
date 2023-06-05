@@ -1,0 +1,21 @@
+<h2>Team Management</h2>
+<div>
+    <label for="teamName">Team Name:</label>
+    <input type="text" id="teamName" [(ngModel)]="teamName">
+</div>
+<hr>
+<h3>Add Member</h3>
+<div>
+    <label for="memberName">Name:</label>
+    <select id="memberName" [(ngModel)]="selectedMember">
+        <option *ngFor="let member of availableMembers" [value]="member.email">{{ member.username }}</option>
+    </select>
+</div>
+<button (click)="addMember()">Add Member</button>
+<hr>
+<h3>Members</h3>
+<div class="user-list">
+    <app-user-card *ngFor="let member of members | async" [user]="member" [buttonName]="buttonName" [buttonAction]="removeMember.bind(this)"></app-user-card>
+</div>
+<hr>
+<button (click)="updateTeamName()">Save</button>

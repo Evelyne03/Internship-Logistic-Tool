@@ -54,5 +54,11 @@ public class MentorGradeController {
                 return ResponseEntity.badRequest().body(e.getMessage());
             }
         }
+
+    @GetMapping("/task/{taskId}")
+    public ResponseEntity<List<MentorGrade>> getGradesByTask(@PathVariable Long taskId){
+        List<MentorGrade> grades = mentorGradeService.getGradesByTask(taskId);
+        return ResponseEntity.ok(grades);
+    }
     
 }

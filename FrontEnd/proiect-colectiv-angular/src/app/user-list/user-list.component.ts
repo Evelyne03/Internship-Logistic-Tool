@@ -9,6 +9,7 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit {
     users: User[] = [];
+    buttonName: string = "Delete";
 
     constructor(private userService: UserService){}
 
@@ -20,6 +21,12 @@ export class UserListComponent implements OnInit {
       this.userService.getMembers().subscribe((users: User[]) =>{
           this.users = users;
         })
+    }
+
+    deleteUser(id : number) {
+      this.userService.deleteUser(id).subscribe(() => {
+        this.refreshComponent();
+      });
     }
 
 

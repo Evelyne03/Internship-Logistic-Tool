@@ -9,16 +9,30 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class TeamService {
-  
-  
   private _currentTeam = new BehaviorSubject<Team>({} as any);
   readonly currentTeam = this._currentTeam.asObservable();
 
   private url = 'http://localhost:8080'; // Change to your API url
   constructor(private http: HttpClient, private router: Router) {}
 
+  getTeamUsers(teamId:number):Observable<User[]> {
+    return this.http.get<User[]>(`${this.url}/teams/${teamId}/users`);
+  }
+
+  removeUserFromTeam(userId: number) {
+    return this.http.put(`${this.url}/teams/removeUser`, {"userId": userId});
+  }
+
+  addUserToTeam(id: number | undefined, userEmail: String | undefined) {
+    return this.http.patch(`${this.url}/teams/${id}/addUser`, {userEmail: userEmail});
+  }
+
   getTeamMembers(teamid:number):Observable<User[]> {
-    return this.http.get<User[]>(`${this.url}/teams/${teamid}/users`);
+    return this.http.get<User[]>(`${this.url}/teams/${teamid}/members`);
+  }
+
+  getAllAvailableMembers() {
+    return this.http.get<User[]>(`${this.url}/teams/availableMembers`);
   }
 
   getTeam(teamid:number):Observable<Team> {
@@ -35,5 +49,8 @@ export class TeamService {
 
   setMentor(teamId: number, userId: number) {
     return this.http.patch(`${this.url}/teams/${teamId}/addMentor`, {userId: userId});
+  }
+  updateTeamName(teamId:number, name:string):Observable<Team> {
+    return this.http.patch<Team>(`${this.url}/teams/${teamId}/updateTeamName`, {"name": name});
   }
 }

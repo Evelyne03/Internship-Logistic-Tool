@@ -18,14 +18,20 @@
     display: block;
 }
 
-.button {
-    width: 90%;
-    margin: 5% auto;
-    margin-left: 5%;
+.button-container {
+    display: flex;
+    justify-content: center;
+    max-height: 50px; /* Adjust the max-height as needed */
+  }
+  
+  .button {
+    width: 90%; /* Adjust the width as needed */
     color: white;
     background-color: #9868eb;
-}
-
+    padding: 8px 16px;
+    margin: 5% auto;
+  }
+  
 p {
     color: white;
     background-color: #673ab7;

@@ -14,6 +14,7 @@ export class UserListTeamComponent implements OnInit {
   users: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   hasTeam: boolean = false;
+  buttonName: string = "Delete";
   
   constructor(private userService: UserService, private teamService: TeamService) {}
 
@@ -47,5 +48,11 @@ export class UserListTeamComponent implements OnInit {
       console.log("Current user is not defined");
     }
     
+  }
+
+  deleteUser(id : number) {
+    this.userService.deleteUser(id).subscribe(() => {
+      this.refreshComponent();
+    });
   }
 }

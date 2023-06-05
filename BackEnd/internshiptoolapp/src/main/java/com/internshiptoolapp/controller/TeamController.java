@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.internshiptoolapp.entities.Activity;
 import com.internshiptoolapp.entities.Team;
 import com.internshiptoolapp.entities.User;
-import com.internshiptoolapp.repository.TeamRepo;
 import com.internshiptoolapp.services.TeamService;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -36,13 +36,27 @@ public class TeamController {
     }
 
     @PatchMapping("/{teamId}/addUser")
-    public ResponseEntity<?> addUserToTeam(@PathVariable Long teamId, @RequestBody Map<String, Long> body) {
-        Long userId = body.get("userId");
+    public ResponseEntity<?> addUserToTeam(@PathVariable Long teamId, @RequestBody Map<String, String> body) {
+        String userEmail = body.get("userEmail");
+        if (userEmail == null) {
+            return ResponseEntity.badRequest().body("userEmail is required");
+        }
+        try {
+            User user = teamService.addUserToTeam(teamId, userEmail);
+            return ResponseEntity.ok(user);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/removeUser")
+    public ResponseEntity<?> removeUserFromTeam(@RequestBody Map<String, String> body) {
+        String userId = body.get("userId");
         if (userId == null) {
             return ResponseEntity.badRequest().body("userId is required");
         }
         try {
-            User user = teamService.addUserToTeam(teamId, userId);
+            User user = teamService.removeUserFromTeam(userId);
             return ResponseEntity.ok(user);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -51,15 +65,15 @@ public class TeamController {
 
     @PatchMapping("/{teamId}/addMentor")
     public ResponseEntity<?> addMentorToTeam(@PathVariable Long teamId, @RequestBody Map<String, Long> body) {
-    Long userId = body.get("userId");
-    if (userId == null) {
-        return ResponseEntity.badRequest().body("userId is required");
-    }
-    try {
-        User user = teamService.addMentorToTeam(teamId, userId);
-        return ResponseEntity.ok(user);
-    } catch (IllegalArgumentException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
+        Long userId = body.get("userId");
+        if (userId == null) {
+            return ResponseEntity.badRequest().body("userId is required");
+        }
+        try {
+            User user = teamService.addMentorToTeam(teamId, userId);
+            return ResponseEntity.ok(user);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
@@ -78,25 +92,24 @@ public class TeamController {
     }
 
     @PatchMapping("/{teamId}/addActivity")
-    public ResponseEntity<?> addActivityToTeam(@PathVariable Long teamId, @RequestBody Map<String, Long> body){
+    public ResponseEntity<?> addActivityToTeam(@PathVariable Long teamId, @RequestBody Map<String, Long> body) {
         Long activityId = body.get("activityId");
-        if(activityId == null){
+        if (activityId == null) {
             return ResponseEntity.badRequest().body("Activity id is missing");
         }
-        try{
+        try {
             Activity activity = teamService.addActivityToTeam(teamId, activityId);
             return ResponseEntity.ok(activity);
-        } catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
 
     @GetMapping("/getAll")
     public ResponseEntity<List<Team>> getAllTeams() {
         List<Team> teams = teamService.findAllTeams();
         return ResponseEntity.ok(teams);
-    
+
     }
 
     @GetMapping("getAllNoMentor")
@@ -105,10 +118,18 @@ public class TeamController {
         return ResponseEntity.ok(teams);
     }
 
-     @GetMapping("/{teamId}/users")
+    @GetMapping("/{teamId}/users")
     public ResponseEntity<List<User>> getUsersByTeamId(@PathVariable Long teamId) {
         Optional<Team> teamOptional = teamService.findById(teamId);
         List<User> users = teamOptional.get().getMembers();
+        return ResponseEntity.ok(users);
+    }
+
+    @GetMapping("/{teamId}/members")
+    public ResponseEntity<List<User>> getMembersByTeamId(@PathVariable Long teamId) {
+        Optional<Team> teamOptional = teamService.findById(teamId);
+        List<User> users = teamOptional.get().getMembers().stream().filter(user -> user.getRole().equals("member"))
+                .collect(java.util.stream.Collectors.toList());
         return ResponseEntity.ok(users);
     }
 
@@ -117,6 +138,24 @@ public class TeamController {
         Optional<Team> teamOptional = teamService.findById(teamId);
         Team team = teamOptional.get();
         return ResponseEntity.ok(team);
+    }
+
+    @GetMapping("/{teamId}/activities")
+    public ResponseEntity<List<Activity>> getActivitiesByTeamId(@PathVariable Long teamId) {
+    Optional<Team> teamOptional = teamService.findById(teamId);
+    List<Activity> activities = teamOptional.get().getActivities();
+    return ResponseEntity.ok(activities);
+}
+
+    @PatchMapping("/{id}/updateTeamName")
+    public ResponseEntity<Team> putMethodName(@PathVariable long id, @RequestBody Map<String, String> body) {
+        return ResponseEntity.ok(teamService.updateTeam(id, body.get("name")));
+    }
+
+    @GetMapping("/availableMembers")
+    public ResponseEntity<List<User>> getAvailableUsers() {
+        List<User> users = teamService.getAvailableUsers();
+        return ResponseEntity.ok(users);
     }
 
 }

@@ -17,13 +17,13 @@ import { Component1Component } from './component1/component1.component';
 import { Component2Component } from './component2/component2.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { UserService } from './user.service';
-import {HttpClient} from '@angular/common/http';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserListComponent } from './user-list/user-list.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { UserCardComponent } from './user-card/user-card.component';
 import { UserListTeamComponent } from './user-list-team/user-list-team.component';
@@ -43,8 +43,9 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { TeamCardComponent } from './team-card/team-card.component';
 import { TeamService } from './team.service';
-import { UserTeamDataComponent } from './user-team-data/user-team-data.component';
-import { DialogLeaveTeamComponent } from './dialog-leave-team/dialog-leave-team.component';
+import { TeamDataComponent } from './team-data/team-data.component';
+import { CommonModule } from '@angular/common';
+import { TeamGradesComponent } from './team-grades/team-grades.component';
 
 
 
@@ -72,8 +73,9 @@ import { DialogLeaveTeamComponent } from './dialog-leave-team/dialog-leave-team.
     ActivityComponent,
     TodoComponent,
     TeamCardComponent,
-    UserTeamDataComponent,
-    DialogLeaveTeamComponent,
+    TeamCardComponent,
+    TeamDataComponent,
+    TeamGradesComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +90,7 @@ import { DialogLeaveTeamComponent } from './dialog-leave-team/dialog-leave-team.
     MatToolbarModule,
     HttpClientModule,
     MatSidenavModule,
-    MatListModule, 
+    MatListModule,
     MatTableModule,
     MatSortModule,
     MatIconModule,
@@ -105,14 +107,16 @@ import { DialogLeaveTeamComponent } from './dialog-leave-team/dialog-leave-team.
     MatButtonModule,
     RouterModule,
     CdkVirtualScrollViewport,
-    ScrollingModule
+    ScrollingModule,
+    CommonModule
   ],
   providers: [
     UserListComponent,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { 
-  
+export class AppModule {
+
 }

@@ -7,13 +7,6 @@
     flex-direction: column;
   }
 
-.task-card {
-    flex-basis: 33%;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    background-color: white;
-    color: purple;
-  }
 
   .task-grid {
     width: 100%;
@@ -32,15 +25,7 @@
     margin-left: 10px;
       
   }
-  
-  .task-card {
-    width: 25%;
-    max-width: 350px;
-    margin-left: 7px;
-    border: 1px solid #ccc;
-    background-color: white;
-    color: purple;
-  }
+
 
   .test{
     width: 100%;
@@ -55,31 +40,38 @@
   .center {
     text-align:center;
   }
-
+  
   .stanga{
     text-align: left;
     padding-left: 10px;
   }
-
+  
   .gunoi{
-    align-self: center;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
   }
-   .task-row {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
+  
   .task-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: stretch;
+  }
+  
+  .task-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .task-card {
-    width: calc(2000px); 
-    height: 200px; 
-    margin-bottom: 20px;
+    width: 350px;  /* Change this value to your desired fixed width */
+    margin: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: purple;
   }
-  
   
   

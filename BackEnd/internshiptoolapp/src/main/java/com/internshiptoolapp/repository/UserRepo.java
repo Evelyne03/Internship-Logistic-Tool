@@ -1,10 +1,10 @@
 package com.internshiptoolapp.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.internshiptoolapp.entities.Team;
 import com.internshiptoolapp.entities.User;
 
 public interface UserRepo extends JpaRepository<User, Long> {

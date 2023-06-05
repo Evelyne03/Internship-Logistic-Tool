@@ -23,55 +23,39 @@ public class Task {
     @Column
     private Boolean isCompleted;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "activity_id")
-    private Activity activity;
-
-    @OneToMany(mappedBy = "task")
-    private List<MentorGrade> grades;
+    @Column(nullable = false , name = "activity_id")
+    private long activity;
 
     // Getters and Setters...
 
     public Task() {
     }
 
-    public Task(String name, String description, Activity activity) {
+    public Task(String name, String description, Boolean isCompleted, long activity) {
         this.name = name;
         this.description = description;
+        this.isCompleted = isCompleted;
         this.activity = activity;
-    }
-
-    public Task(String name, String description, Activity activity, List<MentorGrade> grades) {
-        this.name = name;
-        this.description = description;
-        this.activity = activity;
-        this.grades = grades;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setActivity(Activity activity) {
+    public void setActivity(long activity) {
         this.activity = activity;
     }
 
-    public void setGrades(List<MentorGrade> grades) {
-        this.grades = grades;
-    }
 
     public String getName() {
         return name;
     }
 
-    public Activity getActivity() {
+    public long getActivity() {
         return activity;
     }
 
-    public List<MentorGrade> getGrades() {
-        return grades;
-    }
+
 
     public Long getId() {
         return id;

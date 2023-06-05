@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class TaskController {
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         Task createdTask = taskService.createTask(task);
         MentorGrade grade = new MentorGrade();
-        grade.setTask(createdTask);
+        grade.setTask(createdTask.getId());
         grade.setGrade(-1);
         grade.setMentor(null);
         grade.setStudent(null);
@@ -44,4 +45,11 @@ public class TaskController {
         List<Task> tasks = taskService.getAllTasks();
         return ResponseEntity.ok(tasks);
     } 
+
+    @GetMapping("/{activityid}")
+    public ResponseEntity<List<Task>> getTasksByActivityId(Long activityid){
+        List<Task> tasks = taskService.getTasksByActivityId(activityid);
+        return ResponseEntity.ok(tasks);
+    }
+
 }
