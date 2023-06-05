@@ -62,4 +62,14 @@ public class ActivityController {
         }
     }
 
+    @GetMapping("/{activityId}/tasks")
+    public ResponseEntity<?> getTasksFromActivity(@PathVariable Long activityId){
+        try{
+            List<Task> tasks = activityService.getTasksFromActivity(activityId);
+            return ResponseEntity.ok(tasks);
+        }catch(IllegalArgumentException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
 }

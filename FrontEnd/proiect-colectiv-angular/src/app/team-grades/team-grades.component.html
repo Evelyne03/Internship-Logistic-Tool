@@ -1,0 +1,28 @@
+<div *ngFor="let activity of activities">
+  <h3>{{ activity.name }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Task name</th>
+        <th>Assigned to</th>
+        <th>Task description</th>
+        <th>Grade</th>
+        <th>Feedback</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.name }}</td>
+        <td>{{ getNameByStudentId(task.student_id) }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.isCompleted ? getTaskGrade(task.id) : "Not Complete yet!"}}</td>
+        <td>{{ task.isCompleted ? getTaskFeedback(task.id) :  "Not Complete yet!"}}</td>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <td><strong>Average Grade:</strong></td>
+        <td>{{ getAverageGradeForActivity(activity.id) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

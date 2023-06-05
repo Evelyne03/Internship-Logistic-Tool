@@ -31,7 +31,9 @@ export class TeamDataComponent implements OnInit {
   }
 
   updateTeamName() {
-    this.teamService.updateTeamName(this.userService.currentUserValue.teamId, this.teamName).subscribe();
+    this.teamService.updateTeamName(this.userService.currentUserValue.teamId, this.teamName).subscribe(_ => {
+      this.refreshMembers();
+    });
   }
 
   refreshMembers() {

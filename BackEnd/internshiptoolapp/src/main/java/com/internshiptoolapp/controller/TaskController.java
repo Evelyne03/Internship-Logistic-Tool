@@ -31,7 +31,7 @@ public class TaskController {
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         Task createdTask = taskService.createTask(task);
         MentorGrade grade = new MentorGrade();
-        grade.setTask(createdTask);
+        grade.setTask(createdTask.getId());
         grade.setGrade(-1);
         grade.setMentor(null);
         grade.setStudent(null);

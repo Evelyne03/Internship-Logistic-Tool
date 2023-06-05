@@ -44,6 +44,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { TeamCardComponent } from './team-card/team-card.component';
 import { TeamService } from './team.service';
 import { TeamDataComponent } from './team-data/team-data.component';
+import { CommonModule } from '@angular/common';
+import { TeamGradesComponent } from './team-grades/team-grades.component';
 
 
 
@@ -72,7 +74,8 @@ import { TeamDataComponent } from './team-data/team-data.component';
     TodoComponent,
     TeamCardComponent,
     TeamCardComponent,
-    TeamDataComponent
+    TeamDataComponent,
+    TeamGradesComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import { TeamDataComponent } from './team-data/team-data.component';
     MatButtonModule,
     RouterModule,
     CdkVirtualScrollViewport,
-    ScrollingModule
+    ScrollingModule,
+    CommonModule
   ],
   providers: [
     UserListComponent,

@@ -52,5 +52,7 @@ public class MentorGradeService {
         return UserRepo.save(student);
     }
 
-    // Add methods to handle CRUD operations
+    public List<MentorGrade> getGradesByTask(Long taskId) {
+        return mentorGradeRepository.findByTask(taskId);
+    }
 }

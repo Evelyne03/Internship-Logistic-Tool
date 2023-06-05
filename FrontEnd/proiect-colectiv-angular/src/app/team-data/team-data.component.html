@@ -18,4 +18,4 @@
     <app-user-card *ngFor="let member of members | async" [user]="member" [buttonName]="buttonName" [buttonAction]="removeMember.bind(this)"></app-user-card>
 </div>
 <hr>
-<button (click)="updateTeamName()">Save Team</button>
+<button (click)="updateTeamName()">Save</button>

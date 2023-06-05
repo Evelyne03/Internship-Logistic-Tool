@@ -36,13 +36,18 @@ public class ActivityService {
         Activity activity = activityRepository.findById(activityId).orElseThrow(()-> new EntityNotFoundException("Activity not found with id " + activityId));
         Task task = taskRepository.findById(taskId).orElseThrow(()-> new EntityNotFoundException("Task not found with id " + taskId));
 
-        task.setActivity(activity);
+        task.setActivity(activity.getId());
         return taskRepository.save(task);
     }
 
     public void deleteActivity(Long activityId) {
         Activity activity = activityRepository.findById(activityId).orElseThrow(()-> new EntityNotFoundException("Activity not found with id " + activityId));
         activityRepository.delete(activity);
+    }
+
+    public List<Task> getTasksFromActivity(Long activityId) {
+        Activity activity = activityRepository.findById(activityId).orElseThrow(()-> new EntityNotFoundException("Activity not found with id " + activityId));
+        return activity.getTasks();
     }
 
     

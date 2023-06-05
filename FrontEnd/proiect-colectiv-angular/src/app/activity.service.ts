@@ -8,37 +8,37 @@ import { switchMap, mapTo } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ActivityService {
-    
 
-    private url = 'http://localhost:8080';
 
-    constructor(private http: HttpClient) { }
+  private url = 'http://localhost:8080';
 
-    createActivity(activity: Activity): Observable<Activity> {
-      return this.http.post<Activity>(`${this.url}/activities/create`, activity);
-    }
+  constructor(private http: HttpClient) { }
 
-    deleteActivity(activityId: number): Observable<any> {
-      return this.http.delete(`${this.url}/activities/delete/${activityId}`);
-    }
+  createActivity(activity: Activity): Observable<Activity> {
+    return this.http.post<Activity>(`${this.url}/activities/create`, activity);
+  }
 
-    // function to get team activities
-getTeamActivities(teamId: number): Observable<Activity[]> {
-  return this.http.get<Activity[]>(`${this.url}/teams/${teamId}/activities`);
-}
+  deleteActivity(activityId: number): Observable<any> {
+    return this.http.delete(`${this.url}/activities/delete/${activityId}`);
+  }
 
-// function to create an activity and add it to the team
-createActivityAndAddToTeam(teamId: number, activity: Activity): Observable<Activity> {
+  // function to get team activities
+  getTeamActivities(teamId: number): Observable<Activity[]> {
+    return this.http.get<Activity[]>(`${this.url}/teams/${teamId}/activities`);
+  }
+
+  // function to create an activity and add it to the team
+  createActivityAndAddToTeam(teamId: number, activity: Activity): Observable<Activity> {
     return this.http.post<Activity>(`${this.url}/activities/create`, activity).pipe(
-    switchMap(createdActivity => {
-      // use the id from the created activity here
-      activity.id = createdActivity.id;
-      return this.http.patch(`${this.url}/teams/${teamId}/addActivity`, { activityId: createdActivity.id }).pipe(
-        mapTo(createdActivity) // return the created activity
-      );
-    })
-  );
-}
+      switchMap(createdActivity => {
+        // use the id from the created activity here
+        activity.id = createdActivity.id;
+        return this.http.patch(`${this.url}/teams/${teamId}/addActivity`, { activityId: createdActivity.id }).pipe(
+          mapTo(createdActivity) // return the created activity
+        );
+      })
+    );
+  }
 
-    
+
 }
