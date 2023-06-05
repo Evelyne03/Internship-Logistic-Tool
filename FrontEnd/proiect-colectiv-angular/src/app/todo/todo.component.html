@@ -19,7 +19,7 @@
       <mat-card class="task-card" *ngFor="let task of tasks; let i = index">
         <h2 class="center">{{task.name}}</h2>
         <p class="center">{{task.description}}</p>
-        <p class="stanga"><strong>Assigned to:</strong> {{task.studentId}}</p>
+        <p class="stanga"><strong>Assigned to:</strong> {{getStudentName(task.studentId)}}</p>
         <button class="gunoi" mat-icon-button color="warn" (click)="deleteTask(i)">
           <mat-icon>delete</mat-icon>
         </button>

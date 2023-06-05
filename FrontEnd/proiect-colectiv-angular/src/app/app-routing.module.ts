@@ -21,6 +21,7 @@ import { TodoComponent } from './todo/todo.component';
 import { ActivityComponent } from './activity/activity.component';
 import { TeamDataComponent } from './team-data/team-data.component';
 import { TeamGradesComponent } from './team-grades/team-grades.component';
+import { TaskListComponent } from './member-grades/member-grades.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 
 
@@ -69,9 +70,7 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'myData', pathMatch: 'full' },
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
-          { path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
-          { path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
-          { path: 'myFeedback', component: UserFeedbackComponent, },
+          { path: 'myGrades', component: TaskListComponent, pathMatch: 'full' },
         ]
       },
       { path: 'teamleader', component: TeamleaderComponent, pathMatch: 'full' },
