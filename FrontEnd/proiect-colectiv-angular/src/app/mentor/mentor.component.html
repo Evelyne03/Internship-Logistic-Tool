@@ -4,7 +4,7 @@
     <div class="buttons">
       <button mat-raised-button class="button" routerLink="myData">See my data</button>
       <button mat-raised-button class="button" routerLink="allStudents">See all users</button>
-      <button mat-raised-button class="button" routerLink="myStudents">See my students</button>
+      <button mat-raised-button class="button" routerLink="myStudents">{{user && user.teamId? "See my students" : "Select a team"}}</button>
       <button mat-raised-button class="button" routerLink="activity">Activity</button>
       <button mat-raised-button class="button" routerLink="completed">Completed Tasks</button>
     </div>

@@ -34,7 +34,7 @@ export class TodoComponent implements OnInit {
     this.taskService.getTasksByActivity(this.activityId).subscribe(
       (tasks: Task[]) => {
         console.log("Here are the:", tasks);
-        this.tasks = tasks;
+        this.tasks = tasks.filter(task => task.isCompleted === false);
       },
       error => {
         console.error(error);
@@ -54,9 +54,6 @@ export class TodoComponent implements OnInit {
         isCompleted: false,
         activity: this.activityId, // use the activityId here
         studentId: this.selectedAssignee, // This is a placeholder.
-        
-        grade: -1,
-        feedback: ''
     };
 
     this.taskService.saveTask(newTask).subscribe((createdTask) => {

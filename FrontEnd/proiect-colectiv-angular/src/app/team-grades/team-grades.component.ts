@@ -44,7 +44,7 @@ export class TeamGradesComponent implements OnInit {
         });
       });
       // Fetch users data for the team
-      this.teamService.getTeamMembers(teamId).subscribe(users => {
+      this.teamService.getTeamUsers(teamId).subscribe(users => {
         this.users = users;
       });
     });

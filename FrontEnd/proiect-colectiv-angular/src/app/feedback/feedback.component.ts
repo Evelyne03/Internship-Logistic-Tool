@@ -7,6 +7,7 @@ import { Task } from '../task';
 import { TaskService } from '../task.service';
 import { TeamService } from '../team.service';
 import { UserService } from '../user.service';
+import { Grade } from '../grade';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
@@ -14,9 +15,10 @@ import { UserService } from '../user.service';
 })
 export class FeedbackComponent {
   tasks: Task[] = [];
+  grades: Grade[] = [];
   gradeOptions: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-  constructor(private taskService: TaskService, private userService: UserService, private activityService: ActivityService, private teamService: TeamService, private gradeService: GradeService) { 
+  constructor(private taskService: TaskService, private userService: UserService, private activityService: ActivityService, private teamService: TeamService, private gradeService: GradeService) {
   }
 
   ngOnInit(): void {
@@ -24,36 +26,43 @@ export class FeedbackComponent {
   }
 
   showCompletedTasks() {
-    const teamid = this.userService.currentUserValue.teamId;
+    const teamId = this.userService.currentUserValue.teamId;
+    this.activityService.getTeamActivities(teamId).subscribe(
+      (activities) => {
+        activities.forEach((activity) => {
+          this.taskService.getTasksByActivity(activity.id).subscribe(
+            (tasks) => {
+              tasks.forEach((task) => {
+                this.gradeService.getGradeByTask(task.id).subscribe(
+                  (grade) => {
+                    if (task.isCompleted) {
+                      this.tasks.push(task);
+                      this.grades.push(grade);
+                    }
+                    console.log(this.tasks);
+                  }
+                )
+              })
+            }
+          )
+        });
+      }
+    )
+  }
 
-this.teamService.getTeam(teamid).pipe(
-  tap(team => console.log('Retrieved team: ', team)), // Log the retrieved team
-  switchMap(team => this.activityService.getTeamActivities(team.id)),
-  tap(activities => console.log('Retrieved activities: ', activities)), // Log the retrieved activities
-  switchMap(activities => from(activities)),
-  tap(activity => console.log('Processing activity: ', activity)), // Log the activity being processed
-  switchMap(activity => this.taskService.getTasks().pipe(
-    switchMap(tasks => from(tasks)), // Convert the array of tasks to an Observable stream
-    tap(task => console.log('Processing task: ', task)), // Log the task being processed
-    filter(task => task.isCompleted && task.activity === activity.id), // Filter out uncompleted tasks and tasks not related to team activities
-    toArray() // Collect all tasks back into a single array
-  )),
-).subscribe(filteredTasks => {
-  this.tasks = filteredTasks; // Assign the filtered tasks
-  console.log('Final filtered tasks: ', this.tasks); // Log the final filtered tasks
-});
+  getGradeByTaskId(taskId: number) {
+    return this.grades.find(grade => grade.task == taskId)?.grade.toString() || "0";
+  }
 
-
-
-//console.log(this.tasks);
-
-}
+  getFeedbackByTaskId(taskId: number) {
+    return this.grades.find(grade => grade.task == taskId)?.feedback || "";
+  }
 
   sendFeedback(task: Task) {
     //update grade and feedback
-    this.gradeService.updateGrade(task.id, task.grade, task.feedback).subscribe(
+    this.gradeService.updateGrade(task.id, Number.parseInt(this.getGradeByTaskId(task.id)), this.getFeedbackByTaskId(task.id)).subscribe(
       (grade) => {
-        console.log("Grade updated");
+        console.log("Grade updated"); 
       }
     );
   }

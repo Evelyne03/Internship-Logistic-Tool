@@ -1,6 +1,8 @@
 .task-list {
   list-style-type: none;
   padding: 0;
+  overflow-y: scroll;
+  height: 90%;
 }
 
 .task-item {

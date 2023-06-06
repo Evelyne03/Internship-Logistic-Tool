@@ -52,11 +52,6 @@ public class MentorGradeService {
         return UserRepo.save(student);
     }
 
-    public List<MentorGrade> getGradesByTask(Long taskId) {
-        return mentorGradeRepository.findByTask(taskId);
-    }
-
-
     public MentorGrade getGradeById(Long id) {
         return mentorGradeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Grade not found"));
     }
@@ -73,5 +68,9 @@ public class MentorGradeService {
         gradeToUpdate.setMentor(UserRepo.findById(mentorId).orElseThrow(() -> new IllegalArgumentException("Mentor not found")));
         gradeToUpdate.setStudent(UserRepo.findById(studentId).orElseThrow(() -> new IllegalArgumentException("Student not found")));
         mentorGradeRepository.save(gradeToUpdate);
+    }
+
+    public MentorGrade getGradeByTask(Long taskId) {
+        return mentorGradeRepository.findByTask(taskId).orElseThrow(() -> new IllegalArgumentException("Grade not found"));
     }
 }

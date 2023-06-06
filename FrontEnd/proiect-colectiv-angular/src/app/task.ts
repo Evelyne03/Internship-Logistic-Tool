@@ -7,8 +7,4 @@ export interface Task {
     isCompleted: boolean;
     activity: number;
     studentId: number;
-
-    //to resolve
-    grade: number;
-    feedback: string;
 }

@@ -81,8 +81,8 @@ const routes: Routes = [
           { path: '', redirectTo: 'myData', pathMatch: 'full' },
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
           {path: 'myTeam', component: TeamDataComponent, pathMatch: 'full'},
-          {path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full'}
-          //{ path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
+          {path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full'},
+          {path: 'myGrades', component: TaskListComponent, pathMatch: 'full' },
           //{ path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
           //{ path: 'myFeedback', component: UserFeedbackComponent, },
         ]

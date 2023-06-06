@@ -40,9 +40,9 @@ public class MentorGradeController {
     
 
     @GetMapping("/task/{taskId}")
-    public ResponseEntity<List<MentorGrade>> getGradesByTask(@PathVariable Long taskId){
-        List<MentorGrade> grades = mentorGradeService.getGradesByTask(taskId);
-        return ResponseEntity.ok(grades);
+    public ResponseEntity<MentorGrade> getGradesByTask(@PathVariable Long taskId){
+        MentorGrade grade = mentorGradeService.getGradeByTask(taskId);
+        return ResponseEntity.ok(grade);
     }
 
 
