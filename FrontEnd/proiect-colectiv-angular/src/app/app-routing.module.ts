@@ -17,6 +17,7 @@ import { UserFeedbackComponent } from './user-feedback/user-feedback.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListTeamComponent } from './user-list-team/user-list-team.component';
+import { UserTeamDataComponent } from './user-team-data/user-team-data.component';
 import { TodoComponent } from './todo/todo.component';
 import { ActivityComponent } from './activity/activity.component';
 import { TeamDataComponent } from './team-data/team-data.component';
@@ -44,10 +45,11 @@ const routes: Routes = [
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
           { path: 'allStudents', component: UserListComponent, pathMatch: 'full' },
           { path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full' },
+          { path: 'activity', component: ActivityComponent, pathMatch: 'full' },
+          { path: 'tasks', component: TodoComponent, pathMatch: 'full' }
           { path: 'activity', component: ActivityComponent, pathMatch: 'full'},
           { path: 'tasks', component: TodoComponent, pathMatch: 'full'},
-          
-          
+
 
         ]
       },
@@ -70,7 +72,12 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'myData', pathMatch: 'full' },
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
+          { path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
+          { path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
+          { path: 'myFeedback', component: UserFeedbackComponent, pathMatch: 'full' },
+          { path: 'myTeam', component: UserTeamDataComponent, pathMatch: 'full' },
           { path: 'myGrades', component: TaskListComponent, pathMatch: 'full' },
+
         ]
       },
       { path: 'teamleader', component: TeamleaderComponent, pathMatch: 'full' },
@@ -80,6 +87,9 @@ const routes: Routes = [
         children: [
           { path: '', redirectTo: 'myData', pathMatch: 'full' },
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
+          { path: 'myTeam', component: TeamDataComponent, pathMatch: 'full' },
+          { path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full' },
+          //{ path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
           {path: 'myTeam', component: TeamDataComponent, pathMatch: 'full'},
           {path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full'},
           {path: 'myGrades', component: TaskListComponent, pathMatch: 'full' },
