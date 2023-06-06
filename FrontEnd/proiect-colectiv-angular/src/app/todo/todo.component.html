@@ -6,11 +6,11 @@
     <input matInput placeholder="Task description" #description>
   </mat-form-field>
   <mat-form-field>
-    <mat-select placeholder="Assignee" [(ngModel)] = "selectedAssignee">
-      <mat-option *ngFor="let person of assignees" [value]="person.id">{{person.name}}</mat-option>
+    <mat-select placeholder="Assignee" #assignee>
+      <mat-option *ngFor="let person of assignees" [value]="person">{{person}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="addTask(title.value, description.value, selectedAssignee); title.value=''; description.value=''">Add Task</button>
+  <button mat-raised-button color="primary" (click)="addTask(title.value, description.value); title.value=''; description.value=''">Add Task</button>
 </div>
 
 <div class="test">
@@ -19,7 +19,7 @@
       <mat-card class="task-card" *ngFor="let task of tasks; let i = index">
         <h2 class="center">{{task.name}}</h2>
         <p class="center">{{task.description}}</p>
-        <p class="stanga"><strong>Assigned to:</strong> {{getStudentName(task.studentId)}}</p>
+        <p class="stanga"><strong>Assigned to:</strong> {{task.studentId}}</p>
         <button class="gunoi" mat-icon-button color="warn" (click)="deleteTask(i)">
           <mat-icon>delete</mat-icon>
         </button>
@@ -27,3 +27,4 @@
     </div>
   </div>
 </div>
+

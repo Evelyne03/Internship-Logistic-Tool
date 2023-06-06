@@ -22,9 +22,6 @@ import { TodoComponent } from './todo/todo.component';
 import { ActivityComponent } from './activity/activity.component';
 import { TeamDataComponent } from './team-data/team-data.component';
 import { TeamGradesComponent } from './team-grades/team-grades.component';
-import { TaskListComponent } from './member-grades/member-grades.component';
-import { FeedbackComponent } from './feedback/feedback.component';
-
 
 const routes: Routes = [
   {
@@ -47,8 +44,6 @@ const routes: Routes = [
           { path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full' },
           { path: 'activity', component: ActivityComponent, pathMatch: 'full' },
           { path: 'tasks', component: TodoComponent, pathMatch: 'full' }
-          { path: 'activity', component: ActivityComponent, pathMatch: 'full'},
-          { path: 'tasks', component: TodoComponent, pathMatch: 'full'},
 
 
         ]
@@ -62,7 +57,6 @@ const routes: Routes = [
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
           { path: 'allStudents', component: UserListComponent, pathMatch: 'full' },
           { path: 'myStudents', component: UserListTeamComponent, pathMatch: 'full' },
-          { path: 'completed', component: FeedbackComponent, pathMatch:'full'}
         ]
       },
       { path: 'member', component: MemberComponent, pathMatch: 'full' },
@@ -75,9 +69,7 @@ const routes: Routes = [
           { path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
           { path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
           { path: 'myFeedback', component: UserFeedbackComponent, pathMatch: 'full' },
-          { path: 'myTeam', component: UserTeamDataComponent, pathMatch: 'full' },
-          { path: 'myGrades', component: TaskListComponent, pathMatch: 'full' },
-
+          { path: 'myTeam', component: UserTeamDataComponent, pathMatch: 'full' }
         ]
       },
       { path: 'teamleader', component: TeamleaderComponent, pathMatch: 'full' },
@@ -88,11 +80,8 @@ const routes: Routes = [
           { path: '', redirectTo: 'myData', pathMatch: 'full' },
           { path: 'myData', component: UserDataComponent, pathMatch: 'full' },
           { path: 'myTeam', component: TeamDataComponent, pathMatch: 'full' },
-          { path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full' },
+          { path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full' }
           //{ path: 'myGrades', component: UserGradesComponent, pathMatch: 'full' },
-          {path: 'myTeam', component: TeamDataComponent, pathMatch: 'full'},
-          {path: 'myTeamGrades', component: TeamGradesComponent, pathMatch: 'full'},
-          {path: 'myGrades', component: TaskListComponent, pathMatch: 'full' },
           //{ path: 'myAttendance', component: UserAttendanceComponent, pathMatch: 'full' },
           //{ path: 'myFeedback', component: UserFeedbackComponent, },
         ]

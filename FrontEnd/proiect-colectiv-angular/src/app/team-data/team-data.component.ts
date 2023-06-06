@@ -25,7 +25,7 @@ export class TeamDataComponent implements OnInit {
   constructor(private teamService: TeamService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.teamService.getTeam(this.userService.currentUserValue.teamId).subscribe((team) => { this.team = team; this.teamName = team.name; });
+    this.teamService.getTeam(this.userService.currentUserValue.teamId).subscribe((team) => { this.team = team; this.teamName = team.name;});
     this.teamService.getAllAvailableMembers().subscribe(members => this.availableMembers = members);
     this.teamService.getTeamMembers(this.userService.currentUserValue.teamId).subscribe(members => this.members.next(members));
   }
@@ -41,15 +41,11 @@ export class TeamDataComponent implements OnInit {
   }
 
   refreshAvailableMembers() {
-    this.teamService.getAllAvailableMembers().subscribe(members => {
-      this.availableMembers = members;
-      this.selectedMember = this.availableMembers.length > 0 ? this.availableMembers[0].email : undefined;
-    });
+    this.teamService.getAllAvailableMembers().subscribe(members => this.availableMembers = members);
   }
 
   addMember() {
-    console.log(this.selectedMember);
-    this.teamService.addUserToTeam(this.userService.currentUserValue.teamId, this.selectedMember).subscribe(
+    this.teamService.addUserToTeam( this.userService.currentUserValue.teamId, this.selectedMember).subscribe(
       () => {
         this.refreshMembers();
         this.refreshAvailableMembers();

@@ -11,10 +11,8 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-list-team.component.css']
 })
 export class UserListTeamComponent implements OnInit {
-  //users: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
-  //teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
-  users: User[] = [];
-  teams: Team[] = [];
+  users: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  teams: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
   hasTeam: boolean = false;
   buttonName: string = "Delete";
   
@@ -26,22 +24,28 @@ export class UserListTeamComponent implements OnInit {
 
   refreshComponent() {
     const currentUser = this.userService.currentUserValue;
+    console.log('Has team: ', this.hasTeam);
     if(currentUser){
+
+      console.log('Current user:', currentUser);
+      console.log('Current user team ID:', currentUser.teamId);
+
       this.hasTeam = currentUser.teamId != 0;
 
     if(this.hasTeam) {
-      this.teamService.getTeamUsers(currentUser.teamId).subscribe((users: User[]) => {
-        this.users = users;
-        console.log(users);
+      this.teamService.getTeamMembers(currentUser.teamId).subscribe((users: User[]) => {
+        this.users.next(users);
+        console.log('Users: ', this.users);
       });
     } else {
       this.teamService.getAllTeamsNoMentor().subscribe((teams: Team[]) => {
-        this.teams = teams;
-        console.log(this.teams);
+        this.teams.next(teams);
+        console.log('Teams: ', this.teams);
       });
     }
     }
     else{
+      console.log("Current user is not defined");
     }
     
   }

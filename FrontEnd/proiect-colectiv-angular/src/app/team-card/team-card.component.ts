@@ -35,6 +35,7 @@ export class TeamCardComponent {
 
   mentorTeam(): void {
     const userId = this.UserService.currentUserValue.id;
+    this.list2.hasTeam = true;
     this.TeamService.setMentor(this.team.id, userId).subscribe(
       (data) => {
         this.UserService.setCurrentUserTeamId(this.team.id);
@@ -42,7 +43,6 @@ export class TeamCardComponent {
         console.log(data);
       }
     );
-    this.UserService.currentUserValue.teamId = this.team.id;
     this.list2.refreshComponent();
   }
   
