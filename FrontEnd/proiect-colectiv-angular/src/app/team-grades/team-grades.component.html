@@ -1,3 +1,6 @@
+<div *ngIf="activities.length === 0">
+  <h3>No activities yet</h3>
+</div>
 <div *ngFor="let activity of activities">
   <h3>{{ activity.name }}</h3>
   <table>
@@ -11,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let task of tasks">
+      <tr *ngFor="let task of getTasksByActivity(activity.id)">
         <td>{{ task.name }}</td>
         <td>{{ getNameByStudentId(task.studentId) }}</td>
         <td>{{ task.description }}</td>

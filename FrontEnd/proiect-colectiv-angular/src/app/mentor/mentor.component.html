@@ -4,8 +4,9 @@
     <div class="buttons">
       <button mat-raised-button class="button" routerLink="myData">See my data</button>
       <button mat-raised-button class="button" routerLink="allStudents">See all users</button>
-      <button mat-raised-button class="button" routerLink="myStudents">See my students</button>
+      <button mat-raised-button class="button" routerLink="myStudents">{{user && user.teamId? "See my students" : "Select a team"}}</button>
       <button mat-raised-button class="button" routerLink="activity">Activity</button>
+      <button mat-raised-button class="button" routerLink="completed">Completed Tasks</button>
     </div>
   </mat-sidenav>
 
@@ -17,14 +18,4 @@
       </mat-toolbar>
     </div>
     <div class="card-container">
-      <mat-card *ngFor="let task of tasks">
-        <mat-card-header>
-          <mat-card-title>{{ task.title }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          {{ task.description }}
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+

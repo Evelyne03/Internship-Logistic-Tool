@@ -1,5 +1,7 @@
 .sidenav-container {
-    height: 80vh;
+    overflow: scroll;
+    height: auto;
+    min-height: 80vh;
   }
 
   .sidenav-container::-webkit-scrollbar {
@@ -42,7 +44,7 @@ body {
 
 
 .mat-sidenav-container {
-    min-height: 450px;
+    min-height: 80vh;
   }
 
   mat-sidenav-content {
@@ -67,4 +69,5 @@ body {
     height: 44px;
   }
   
-  
+
+    

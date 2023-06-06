@@ -44,7 +44,7 @@ export class TeamGradesComponent implements OnInit {
         });
       });
       // Fetch users data for the team
-      this.teamService.getTeamMembers(teamId).subscribe(users => {
+      this.teamService.getTeamUsers(teamId).subscribe(users => {
         this.users = users;
       });
     });
@@ -60,7 +60,7 @@ export class TeamGradesComponent implements OnInit {
 
   getTaskGrade(taskId: number): string {
     const grade = this.grades.find(grade => grade.task === taskId);
-    return grade?.grade ? grade.grade.toString() : 'Not graded yet!';
+    return grade?.grade && grade.grade !== -1 ? grade.grade.toString() : 'Not graded yet!';
   }
 
   getTaskFeedback(taskId: number): string {
@@ -79,7 +79,7 @@ export class TeamGradesComponent implements OnInit {
     let count = 0;
     tasks.forEach(task => {
       const grade = this.grades.find(grade => grade.task === task.id);
-      if (grade) {
+      if (grade && grade.grade !== -1) {
         sum += grade.grade;
         count++;
       }

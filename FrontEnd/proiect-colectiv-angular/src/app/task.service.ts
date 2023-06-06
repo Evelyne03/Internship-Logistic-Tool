@@ -9,6 +9,12 @@ import { Router } from '@angular/router';
 })
 
 export class TaskService {
+  completeTask(taskId: number) {
+    return this.http.put(`${this.url}/tasks/complete/${taskId}`, {});
+  }
+  getMemberTasks(id: number) {
+    return this.http.get<Task[]>(`${this.url}/tasks/get/${id}`);
+  }
   private url = 'http://localhost:8080'
 
   saveTask(task: Task): Observable<Task>{
@@ -16,11 +22,15 @@ export class TaskService {
   }
 
   deleteTask(id: number): Observable<any> {
-    return this.http.delete(`${this.url}/${id}`);
+    return this.http.delete(`${this.url}/tasks/delete/${id}`);
   }
   constructor(private http: HttpClient, private router: Router) {}
 
   getTasksByActivity(id: number) {
-    return this.http.get<Task[]>(`${this.url}/${id}`);  
+    return this.http.get<Task[]>(`${this.url}/tasks/${id}`);  
+  }
+
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.url}/tasks/getAll`);
   }
 }

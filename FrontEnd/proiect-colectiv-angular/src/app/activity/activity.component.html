@@ -14,34 +14,28 @@
           </mat-form-field>
         </div>
         
-        <div class="container"></div>
+        <mat-card-actions class="action-button-container">
+          <button mat-raised-button color="primary" (click)="addActivity()">Add Activity</button>
+        </mat-card-actions>
       </form>
     </mat-card-content>
-    <mat-card-actions class="action-button-container">
-      <button mat-raised-button color="primary" (click)="addActivity()">Add Activity</button>
-    </mat-card-actions>
   </mat-card>
 </div>
 
 <div class="tasks-wrapper">
-    <div class="tasks-container">
-      <div *ngFor="let activity of tasks; let i = index">
-        <mat-card>
-          <mat-card-content>
-            <h2>{{activity.name}}</h2>
-            <p>{{activity.description}}</p> 
-            <app-todo [activityId]="activity.id"></app-todo>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button color="warn" (click)="deleteActivity(i)">Delete</button>
-            <!--button mat-raised-button color="primary" routerLink="/tasks">Tasks</button-->
-          </mat-card-actions>
-        </mat-card>
-      </div>
+  <div class="tasks-container">
+    <div *ngFor="let activity of tasks; let i = index">
+      <mat-card>
+        <mat-card-content>
+          <h2>{{activity.name}}</h2>
+          <p>{{activity.description}}</p> 
+          <app-todo [activityId]="activity.id"></app-todo>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="deleteActivity(i)">Delete</button>
+          <!--button mat-raised-button color="primary" routerLink="/tasks">Tasks</button-->
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
-
-  
- 
-
-
+</div>
